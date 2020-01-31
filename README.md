@@ -18,7 +18,7 @@ Add the package to your `composer.json` and run `composer update`.
 ```json
 {
     "require": {
-        "edwinfadilah/neoeloquent": "1.2.*"
+        "edwinfadilah/neoeloquent": "1.0.*"
     }
 }
 ```
