@@ -271,7 +271,7 @@ class WheresTheTest extends TestCase {
     /**
      * Regression test for issue #19
      *
-     * @see  https://github.com/EdwinFadilah/NeoEloquent/issues/19
+     * @see  https://github.com/Vinelab/NeoEloquent/issues/19
      */
     public function testWhereMultipleValuesForSameColumn()
     {
@@ -284,7 +284,7 @@ class WheresTheTest extends TestCase {
     /**
      * Regression test for issue #41
      *
-     * @see https://github.com/EdwinFadilah/NeoEloquent/issues/41
+     * @see https://github.com/Vinelab/NeoEloquent/issues/41
      */
     public function testWhereWithIn()
     {
