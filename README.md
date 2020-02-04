@@ -68,6 +68,17 @@ Add the package to your `composer.json` and run `composer update`.
 ```
 
 
+#### 5.6
+
+```json
+{
+    "require": {
+        "edwinfadilah/neoeloquent": "1.5.*"
+    }
+}
+```
+
+
 Add the service provider in `app/config/app.php`:
 
 ```php
