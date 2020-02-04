@@ -1,0 +1,28 @@
+<?php
+
+use EdwinFadilah\NeoEloquent\Schema\Blueprint;
+use EdwinFadilah\NeoEloquent\Migrations\Migration;
+
+class DummyClass extends Migration {
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        //
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        //
+    }
+
+}
