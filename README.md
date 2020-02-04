@@ -11,69 +11,27 @@ Neo4j Graph Eloquent Driver for Laravel. This is a personal-use package which is
 
 Add the package to your `composer.json` and run `composer update`.
 
+### Laravel 6
+
+#### 6.x
+
+```json
+{
+    "require": {
+        "edwinfadilah/neoeloquent": "2.0.*"
+    }
+}
+```
+
+
 ### Laravel 5
 
-#### 5.1
+#### 5.8
 
 ```json
 {
     "require": {
-        "edwinfadilah/neoeloquent": "1.0.*"
-    }
-}
-```
-
-
-#### 5.2
-
-```json
-{
-    "require": {
-        "edwinfadilah/neoeloquent": "1.1.*"
-    }
-}
-```
-
-
-#### 5.3
-
-```json
-{
-    "require": {
-        "edwinfadilah/neoeloquent": "1.2.*"
-    }
-}
-```
-
-
-#### 5.4
-
-```json
-{
-    "require": {
-        "edwinfadilah/neoeloquent": "1.3.*"
-    }
-}
-```
-
-
-#### 5.5
-
-```json
-{
-    "require": {
-        "edwinfadilah/neoeloquent": "1.4.*"
-    }
-}
-```
-
-
-#### 5.6
-
-```json
-{
-    "require": {
-        "edwinfadilah/neoeloquent": "1.5.*"
+        "edwinfadilah/neoeloquent": "1.7.*"
     }
 }
 ```
@@ -90,12 +48,67 @@ Add the package to your `composer.json` and run `composer update`.
 ```
 
 
-#### 5.8
+#### 5.6
 
 ```json
 {
     "require": {
-        "edwinfadilah/neoeloquent": "1.7.*"
+        "edwinfadilah/neoeloquent": "1.5.*"
+    }
+}
+```
+
+
+#### 5.5
+
+```json
+{
+    "require": {
+        "edwinfadilah/neoeloquent": "1.4.*"
+    }
+}
+```
+
+
+#### 5.4
+
+```json
+{
+    "require": {
+        "edwinfadilah/neoeloquent": "1.3.*"
+    }
+}
+```
+
+
+#### 5.3
+
+```json
+{
+    "require": {
+        "edwinfadilah/neoeloquent": "1.2.*"
+    }
+}
+```
+
+
+#### 5.2
+
+```json
+{
+    "require": {
+        "edwinfadilah/neoeloquent": "1.1.*"
+    }
+}
+```
+
+
+#### 5.1
+
+```json
+{
+    "require": {
+        "edwinfadilah/neoeloquent": "1.0.*"
     }
 }
 ```
