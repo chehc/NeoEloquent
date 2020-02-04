@@ -9,12 +9,12 @@ use EdwinFadilah\NeoEloquent\Schema\Grammars\CypherGrammar;
 
 class NeoEloquentServiceProvider extends ServiceProvider {
 
-	/**
-	 * Indicates if loading of the provider is deferred.
-	 *
-	 * @var bool
-	 */
-	protected $defer = false;
+    /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
+     */
+    protected $defer = false;
 
     /**
     * Components to register on the provider.
@@ -25,41 +25,43 @@ class NeoEloquentServiceProvider extends ServiceProvider {
         'Migration'
     );
 
-	/**
-	* Bootstrap the application events.
-	*
-	* @return void
-	*/
-	public function boot()
-	{
-		Model::setConnectionResolver($this->app['db']);
+    /**
+    * Bootstrap the application events.
+    *
+    * @return void
+    */
+    public function boot()
+    {
+        Model::setConnectionResolver($this->app['db']);
 
-		Model::setEventDispatcher($this->app['events']);
-	}
+        Model::setEventDispatcher($this->app['events']);
+    }
 
-	/**
-	 * Register the service provider.
-	 *
-	 * @return void
-	 */
-	public function register()
-	{
-		$this->app['db']->extend('neo4j', function($config)
-		{
-			$conn = new Connection($config);
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->app['db']->extend('neo4j', function($config)
+        {
+            $conn = new Connection($config);
             $conn->setSchemaGrammar(new CypherGrammar);
             return $conn;
-		});
+        });
 
-		$this->app->booting(function(){
-			$loader = \Illuminate\Foundation\AliasLoader::getInstance();
-			$loader->alias('NeoEloquent', 'EdwinFadilah\NeoEloquent\Eloquent\Model');
-            $loader->alias('Neo4jSchema', 'EdwinFadilah\NeoEloquent\Facade\Neo4jSchema');
-		});
+        $this->app->resolving(function($app){
+            if (class_exists('Illuminate\Foundation\AliasLoader')) {
+                $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+                $loader->alias('NeoEloquent', 'EdwinFadilah\NeoEloquent\Eloquent\Model');
+                $loader->alias('Neo4jSchema', 'EdwinFadilah\NeoEloquent\Facade\Neo4jSchema');
+            }
+        });
 
 
         $this->registerComponents();
-	}
+    }
 
     /**
     * Register components on the provider.
