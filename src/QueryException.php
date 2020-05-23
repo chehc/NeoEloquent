@@ -1,6 +1,6 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent;
+namespace CheHC\NeoEloquent;
 
 
 use Everyman\Neo4j\Exception as Neo4jException;

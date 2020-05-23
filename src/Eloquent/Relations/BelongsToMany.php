@@ -1,12 +1,12 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Eloquent\Relations;
+namespace CheHC\NeoEloquent\Eloquent\Relations;
 
 
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
-use EdwinFadilah\NeoEloquent\Eloquent\Builder;
+use CheHC\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeIn;
+use CheHC\NeoEloquent\Eloquent\Edges\EdgeIn;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 
 class BelongsToMany extends HasOneOrMany {
@@ -154,7 +154,7 @@ class BelongsToMany extends HasOneOrMany {
      * the related model determined by the relation function name.
      *
      * @param  \Illuminate\Database\Eloquent\Model $model
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Edges\Edge[In|Out]
+     * @return \CheHC\NeoEloquent\Eloquent\Edges\Edge[In|Out]
      */
     public function edge(Model $model = null)
     {
@@ -166,7 +166,7 @@ class BelongsToMany extends HasOneOrMany {
      *
      * @param  \Illuminate\Database\Eloquent\Model $model
      * @param  array         $attributes
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Edges\Edge[In|Out]
+     * @return \CheHC\NeoEloquent\Eloquent\Edges\Edge[In|Out]
      */
     public function getEdge(EloquentModel $model = null, $attributes = array())
     {

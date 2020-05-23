@@ -1,9 +1,9 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Eloquent\Relations;
+namespace CheHC\NeoEloquent\Eloquent\Relations;
 
 
-use EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeIn;
+use CheHC\NeoEloquent\Eloquent\Edges\EdgeIn;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 
 class BelongsTo extends OneRelation {
@@ -100,7 +100,7 @@ class BelongsTo extends OneRelation {
      *
      * @param  \Illuminate\Database\Eloquent\Model $model
      * @param  array         $attributes
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeIn
+     * @return \CheHC\NeoEloquent\Eloquent\Edges\EdgeIn
      */
     public function getEdge(EloquentModel $model = null, $attributes = array())
     {

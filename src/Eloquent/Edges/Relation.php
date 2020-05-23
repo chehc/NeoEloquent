@@ -1,22 +1,22 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Eloquent\Edges;
+namespace CheHC\NeoEloquent\Eloquent\Edges;
 
 
 use DateTime;
 use Carbon\Carbon;
 use Everyman\Neo4j\Relationship;
 use Illuminate\Database\Eloquent\Collection;
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
-use EdwinFadilah\NeoEloquent\Eloquent\Builder;
-use EdwinFadilah\NeoEloquent\NoEdgeDirectionException;
+use CheHC\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Eloquent\Builder;
+use CheHC\NeoEloquent\NoEdgeDirectionException;
 
 abstract class Relation extends Delegate {
 
     /**
      * The edges finder instance.
      *
-     * @var \EdwinFadilah\NeoEloquent\Eloquent\Edges\Finder
+     * @var \CheHC\NeoEloquent\Eloquent\Edges\Finder
      */
     protected $finder;
 
@@ -36,14 +36,14 @@ abstract class Relation extends Delegate {
     /**
      * The left side Model of the relationship.
      *
-     * @var \EdwinFadilah\NeoEloquent\Eloquent\Model
+     * @var \CheHC\NeoEloquent\Eloquent\Model
      */
     protected $parent;
 
     /**
      * The right side Model of the relationship.
      *
-     * @var \EdwinFadilah\NeoEloquent\Eloquent\Model
+     * @var \CheHC\NeoEloquent\Eloquent\Model
      */
     protected $related;
 
@@ -123,9 +123,9 @@ abstract class Relation extends Delegate {
     /**
      * Create a new Relation instance.
      *
-     * @param \EdwinFadilah\NeoEloquent\Eloquent\Builder $query
-     * @param \EdwinFadilah\NeoEloquent\Eloquent\Model   $parent
-     * @param \EdwinFadilah\NeoEloquent\Eloquent\Model   $related
+     * @param \CheHC\NeoEloquent\Eloquent\Builder $query
+     * @param \CheHC\NeoEloquent\Eloquent\Model   $parent
+     * @param \CheHC\NeoEloquent\Eloquent\Model   $related
      * @param string  $type
      */
     public function __construct(Builder $query, Model $parent, Model $related, $type, $attributes = array(), $unique = false)
@@ -146,7 +146,7 @@ abstract class Relation extends Delegate {
      * Initialize the relationship setting the start node,
      * end node and relation type.
      *
-     * @throws  \EdwinFadilah\NeoEloquent\NoEdgeDirectionException If $direction is not set on the inheriting relation.
+     * @throws  \CheHC\NeoEloquent\NoEdgeDirectionException If $direction is not set on the inheriting relation.
      * @return void
      */
     public function initRelation()
@@ -179,7 +179,7 @@ abstract class Relation extends Delegate {
      * Get the direct relationship between
      * the currently set models ($parent and $related).
      *
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Edge[In|Out]
+     * @return \CheHC\NeoEloquent\Eloquent\Edge[In|Out]
      */
     public function current()
     {
@@ -334,7 +334,7 @@ abstract class Relation extends Delegate {
      * Fill the model with an array of attributes.
      *
      * @param  array  $attributes
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Edges\Edge[In|Out]|static
+     * @return \CheHC\NeoEloquent\Eloquent\Edges\Edge[In|Out]|static
      */
     public function fill(array $properties)
     {
@@ -433,7 +433,7 @@ abstract class Relation extends Delegate {
      * Just a convenient method to get
      * the parent model of this relation.
      *
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Model
+     * @return \CheHC\NeoEloquent\Eloquent\Model
      */
     public function parent()
     {
@@ -443,7 +443,7 @@ abstract class Relation extends Delegate {
     /**
      * Get the parent model of this relation.
      *
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Model
+     * @return \CheHC\NeoEloquent\Eloquent\Model
      */
     public function getParent()
     {
@@ -454,7 +454,7 @@ abstract class Relation extends Delegate {
      * Just a convenient function to get
      * the related Model of this relation.
      *
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Model
+     * @return \CheHC\NeoEloquent\Eloquent\Model
      */
     public function related()
     {
@@ -464,7 +464,7 @@ abstract class Relation extends Delegate {
     /**
      * Get the parent model of this relation.
      *
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Model
+     * @return \CheHC\NeoEloquent\Eloquent\Model
      */
     public function getRelated()
     {

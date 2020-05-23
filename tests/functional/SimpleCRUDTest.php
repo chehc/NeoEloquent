@@ -1,14 +1,14 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Tests\Functional;
+namespace CheHC\NeoEloquent\Tests\Functional;
 
 
 use DateTime;
 use Carbon\Carbon;
 use Mockery as M;
-use EdwinFadilah\NeoEloquent\Tests\TestCase;
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
-use EdwinFadilah\NeoEloquent\Eloquent\SoftDeletes;
+use CheHC\NeoEloquent\Tests\TestCase;
+use CheHC\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Eloquent\SoftDeletes;
 
 class Wiz extends Model {
 
@@ -81,7 +81,7 @@ class SimpleCRUDTest extends TestCase {
         $this->assertTrue($w->exists);
         $this->assertInternalType('int', $w->id);
         $this->assertTrue($w->id > 0);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\Wiz', $w);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\Wiz', $w);
     }
 
     /**
@@ -93,7 +93,7 @@ class SimpleCRUDTest extends TestCase {
 
         $this->assertTrue($w->save());
         $this->assertTrue($w->exists);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\Wiz', $w);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\Wiz', $w);
 
         $w2 = Wiz::find($w->id);
         $this->assertEquals($w->toArray(), $w2->toArray());
@@ -108,7 +108,7 @@ class SimpleCRUDTest extends TestCase {
         $w->save();
 
         $this->assertTrue($w->delete());
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\Wiz', $w);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\Wiz', $w);
         $this->assertFalse($w->exists);
     }
 
@@ -123,7 +123,7 @@ class SimpleCRUDTest extends TestCase {
             'nope' => 'nope'
         ]);
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\Wiz', $w);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\Wiz', $w);
         $this->assertTrue($w->exists);
         $this->assertInternalType('int', $w->id);
         $this->assertNull($w->nope);

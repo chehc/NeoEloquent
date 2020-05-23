@@ -1,13 +1,13 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Tests\Query;
+namespace CheHC\NeoEloquent\Tests\Query;
 
 
 use Illuminate\Database\Query\Processors\Processor;
 use Mockery as M;
-use EdwinFadilah\NeoEloquent\Query\Builder;
-use EdwinFadilah\NeoEloquent\Query\Grammars\CypherGrammar;
-use EdwinFadilah\NeoEloquent\Tests\TestCase;
+use CheHC\NeoEloquent\Query\Builder;
+use CheHC\NeoEloquent\Query\Grammars\CypherGrammar;
+use CheHC\NeoEloquent\Tests\TestCase;
 
 class QueryBuilderTest extends TestCase {
 
@@ -15,8 +15,8 @@ class QueryBuilderTest extends TestCase {
     {
         parent::setUp();
 
-        $this->grammar    = M::mock('EdwinFadilah\NeoEloquent\Query\Grammars\CypherGrammar')->makePartial();
-        $this->connection = M::mock('EdwinFadilah\NeoEloquent\Connection');
+        $this->grammar    = M::mock('CheHC\NeoEloquent\Query\Grammars\CypherGrammar')->makePartial();
+        $this->connection = M::mock('CheHC\NeoEloquent\Connection');
         $this->processor = new Processor;
 
         $this->neoClient = M::mock('Everyman\Neo4j\Client');
@@ -298,14 +298,14 @@ class QueryBuilderTest extends TestCase {
 
     public function setupCacheTestQuery($cache, $driver)
     {
-        $connection = m::mock('EdwinFadilah\NeoEloquent\Connection');
+        $connection = m::mock('CheHC\NeoEloquent\Connection');
         $connection->shouldReceive('getClient')->once()->andReturn(M::mock('Everyman\Neo4j\Client'));
         $connection->shouldReceive('getName')->andReturn('default');
         $connection->shouldReceive('getCacheManager')->once()->andReturn($cache);
         $cache->shouldReceive('driver')->once()->andReturn($driver);
         $grammar = new CypherGrammar;
 
-        $builder = $this->getMock('EdwinFadilah\NeoEloquent\Query\Builder', array('getFresh'), array($connection, $grammar));
+        $builder = $this->getMock('CheHC\NeoEloquent\Query\Builder', array('getFresh'), array($connection, $grammar));
         $builder->expects($this->once())->method('getFresh')->with($this->equalTo(array('*')))->will($this->returnValue(array('results')));
 
         return $builder->select('*')->from('User')->where('email', 'foo@bar.com');
@@ -313,7 +313,7 @@ class QueryBuilderTest extends TestCase {
 
     protected function getBuilder()
     {
-        $connection = M::mock('EdwinFadilah\NeoEloquent\Connection');
+        $connection = M::mock('CheHC\NeoEloquent\Connection');
         $client = M::mock('Everyman\Neo4j\Client');
         $connection->shouldReceive('getClient')->once()->andReturn($client);
         $grammar = new CypherGrammar;

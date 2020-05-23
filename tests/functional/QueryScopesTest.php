@@ -1,11 +1,11 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Tests\Functional;
+namespace CheHC\NeoEloquent\Tests\Functional;
 
 
 use Mockery as M;
-use EdwinFadilah\NeoEloquent\Tests\TestCase;
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Tests\TestCase;
+use CheHC\NeoEloquent\Eloquent\Model;
 
 class Misfit extends Model {
 

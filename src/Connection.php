@@ -1,15 +1,15 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent;
+namespace CheHC\NeoEloquent;
 
 
 use Exception;
 use DateTime, Closure;
 use Illuminate\Support\Arr;
 use Everyman\Neo4j\Query\ResultSet;
-use EdwinFadilah\NeoEloquent\Query\Builder;
-use EdwinFadilah\NeoEloquent\QueryException;
-use EdwinFadilah\NeoEloquent\Query\Processors\Processor;
+use CheHC\NeoEloquent\Query\Builder;
+use CheHC\NeoEloquent\QueryException;
+use CheHC\NeoEloquent\Query\Processors\Processor;
 use Everyman\Neo4j\Client as NeoClient;
 use Everyman\Neo4j\Cypher\Query as CypherQuery;
 use Illuminate\Database\Connection as IlluminateConnection;
@@ -330,7 +330,7 @@ class Connection extends IlluminateConnection {
     /**
      * Get the query grammar used by the connection.
      *
-     * @return \EdwinFadilah\NeoEloquent\Query\Grammars\CypherGrammar
+     * @return \CheHC\NeoEloquent\Query\Grammars\CypherGrammar
      */
     public function getQueryGrammar()
     {
@@ -345,7 +345,7 @@ class Connection extends IlluminateConnection {
     /**
      * Get the default query grammar instance.
      *
-     * @return \EdwinFadilah\NeoEloquent\Query\Grammars\CypherGrammar
+     * @return \CheHC\NeoEloquent\Query\Grammars\CypherGrammar
      */
     protected function getDefaultQueryGrammar()
     {
@@ -512,7 +512,7 @@ class Connection extends IlluminateConnection {
     /**
      * Get a schema builder instance for the connection.
      *
-     * @return \EdwinFadilah\NeoEloquent\Schema\Builder
+     * @return \CheHC\NeoEloquent\Schema\Builder
      */
     public function getSchemaBuilder()
     {

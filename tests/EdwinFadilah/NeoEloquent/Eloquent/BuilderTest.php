@@ -1,13 +1,13 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Tests\Eloquent;
+namespace CheHC\NeoEloquent\Tests\Eloquent;
 
 
 use Mockery as M;
 use Illuminate\Support\Collection;
-use EdwinFadilah\NeoEloquent\Tests\TestCase;
-use EdwinFadilah\NeoEloquent\Eloquent\Builder;
-use EdwinFadilah\NeoEloquent\Query\Grammars\CypherGrammar;
+use CheHC\NeoEloquent\Tests\TestCase;
+use CheHC\NeoEloquent\Eloquent\Builder;
+use CheHC\NeoEloquent\Query\Grammars\CypherGrammar;
 
 class EloquentBuilderTest extends TestCase {
 
@@ -15,9 +15,9 @@ class EloquentBuilderTest extends TestCase {
     {
         parent::setUp();
 
-        $this->query = M::mock('EdwinFadilah\NeoEloquent\Query\Builder');
+        $this->query = M::mock('CheHC\NeoEloquent\Query\Builder');
         $this->query->shouldReceive('modelAsNode')->andReturn('n');
-        $this->model = M::mock('EdwinFadilah\NeoEloquent\Eloquent\Model');
+        $this->model = M::mock('CheHC\NeoEloquent\Eloquent\Model');
 
         $this->builder = new Builder($this->query);
     }
@@ -31,7 +31,7 @@ class EloquentBuilderTest extends TestCase {
 
     public function testFindMethod()
     {
-        $builder = M::mock('EdwinFadilah\NeoEloquent\Eloquent\Builder[first]', array($this->getMockQueryBuilder()));
+        $builder = M::mock('CheHC\NeoEloquent\Eloquent\Builder[first]', array($this->getMockQueryBuilder()));
         $builder->setModel($this->getMockModel());
         $builder->getQuery()->shouldReceive('where')->once()->with('foo', '=', 'bar');
         $builder->shouldReceive('first')->with(array('column'))->andReturn('baz');
@@ -45,7 +45,7 @@ class EloquentBuilderTest extends TestCase {
      */
     public function testFindOrFailMethodThrowsModelNotFoundException()
     {
-        $builder = m::mock('EdwinFadilah\NeoEloquent\Eloquent\Builder[first]', array($this->getMockQueryBuilder()));
+        $builder = m::mock('CheHC\NeoEloquent\Eloquent\Builder[first]', array($this->getMockQueryBuilder()));
         $builder->setModel($this->getMockModel());
         $builder->getQuery()->shouldReceive('where')->once()->with('foo', '=', 'bar');
         $builder->shouldReceive('first')->with(array('column'))->andReturn(null);
@@ -57,7 +57,7 @@ class EloquentBuilderTest extends TestCase {
      */
     public function testFindOrFailMethodWithManyThrowsModelNotFoundException()
     {
-        $builder = m::mock('EdwinFadilah\NeoEloquent\Eloquent\Builder[get]', array($this->getMockQueryBuilder()));
+        $builder = m::mock('CheHC\NeoEloquent\Eloquent\Builder[get]', array($this->getMockQueryBuilder()));
         $builder->setModel($this->getMockModel());
         $builder->getQuery()->shouldReceive('whereIn')->once()->with('foo', [1, 2]);
         $builder->shouldReceive('get')->with(array('column'))->andReturn(new Collection([1]));
@@ -69,7 +69,7 @@ class EloquentBuilderTest extends TestCase {
      */
     public function testFirstOrFailMethodThrowsModelNotFoundException()
     {
-        $builder = m::mock('EdwinFadilah\NeoEloquent\Eloquent\Builder[first]', array($this->getMockQueryBuilder()));
+        $builder = m::mock('CheHC\NeoEloquent\Eloquent\Builder[first]', array($this->getMockQueryBuilder()));
         $builder->setModel($this->getMockModel());
         $builder->shouldReceive('first')->with(array('column'))->andReturn(null);
         $result = $builder->firstOrFail(array('column'));
@@ -77,7 +77,7 @@ class EloquentBuilderTest extends TestCase {
 
     public function testFindWithMany()
     {
-        $builder = m::mock('EdwinFadilah\NeoEloquent\Eloquent\Builder[get]', array($this->getMockQueryBuilder()));
+        $builder = m::mock('CheHC\NeoEloquent\Eloquent\Builder[get]', array($this->getMockQueryBuilder()));
         $builder->getQuery()->shouldReceive('whereIn')->once()->with('foo', array(1, 2));
         $builder->setModel($this->getMockModel());
         $builder->shouldReceive('get')->with(array('column'))->andReturn('baz');
@@ -88,7 +88,7 @@ class EloquentBuilderTest extends TestCase {
 
     public function testFirstMethod()
     {
-        $builder = m::mock('EdwinFadilah\NeoEloquent\Eloquent\Builder[get,take]', array($this->getMockQueryBuilder()));
+        $builder = m::mock('CheHC\NeoEloquent\Eloquent\Builder[get,take]', array($this->getMockQueryBuilder()));
         $builder->shouldReceive('take')->with(1)->andReturn($builder);
         $builder->shouldReceive('get')->with(array('*'))->andReturn(new Collection(array('bar')));
 
@@ -98,7 +98,7 @@ class EloquentBuilderTest extends TestCase {
 
     public function testGetMethodLoadsModelsAndHydratesEagerRelations()
     {
-        $builder = m::mock('EdwinFadilah\NeoEloquent\Eloquent\Builder[getModels,eagerLoadRelations]', array($this->getMockQueryBuilder()));
+        $builder = m::mock('CheHC\NeoEloquent\Eloquent\Builder[getModels,eagerLoadRelations]', array($this->getMockQueryBuilder()));
         $builder->shouldReceive('getModels')->with(array('foo'))->andReturn(array('bar'));
         $builder->shouldReceive('eagerLoadRelations')->with(array('bar'))->andReturn(array('bar', 'baz'));
         $builder->setModel($this->getMockModel());
@@ -110,7 +110,7 @@ class EloquentBuilderTest extends TestCase {
 
     public function testGetMethodDoesntHydrateEagerRelationsWhenNoResultsAreReturned()
     {
-        $builder = m::mock('EdwinFadilah\NeoEloquent\Eloquent\Builder[getModels,eagerLoadRelations]', array($this->getMockQueryBuilder()));
+        $builder = m::mock('CheHC\NeoEloquent\Eloquent\Builder[getModels,eagerLoadRelations]', array($this->getMockQueryBuilder()));
         $builder->shouldReceive('getModels')->with(array('foo'))->andReturn(array());
         $builder->shouldReceive('eagerLoadRelations')->never();
         $builder->setModel($this->getMockModel());
@@ -122,7 +122,7 @@ class EloquentBuilderTest extends TestCase {
 
     public function testPluckMethodWithModelFound()
     {
-        $builder = m::mock('EdwinFadilah\NeoEloquent\Eloquent\Builder[first]', array($this->getMockQueryBuilder()));
+        $builder = m::mock('CheHC\NeoEloquent\Eloquent\Builder[first]', array($this->getMockQueryBuilder()));
         $mockModel = new \StdClass;
         $mockModel->name = 'foo';
         $builder->shouldReceive('first')->with(array('name'))->andReturn($mockModel);
@@ -132,7 +132,7 @@ class EloquentBuilderTest extends TestCase {
 
     public function testPluckMethodWithModelNotFound()
     {
-        $builder = m::mock('EdwinFadilah\NeoEloquent\Eloquent\Builder[first]', array($this->getMockQueryBuilder()));
+        $builder = m::mock('CheHC\NeoEloquent\Eloquent\Builder[first]', array($this->getMockQueryBuilder()));
         $builder->shouldReceive('first')->with(array('name'))->andReturn(null);
 
         $this->assertNull($builder->pluck('name'));
@@ -140,7 +140,7 @@ class EloquentBuilderTest extends TestCase {
 
     public function testChunkExecuteCallbackOverPaginatedRequest()
     {
-        $builder = m::mock('EdwinFadilah\NeoEloquent\Eloquent\Builder[forPage,get]', array($this->getMockQueryBuilder()));
+        $builder = m::mock('CheHC\NeoEloquent\Eloquent\Builder[forPage,get]', array($this->getMockQueryBuilder()));
         $builder->shouldReceive('forPage')->once()->with(1, 2)->andReturn($builder);
         $builder->shouldReceive('forPage')->once()->with(2, 2)->andReturn($builder);
         $builder->shouldReceive('forPage')->once()->with(3, 2)->andReturn($builder);
@@ -185,7 +185,7 @@ class EloquentBuilderTest extends TestCase {
         $query = $this->getMockQueryBuilder();
         $query->columns = array('n.name', 'n.age');
 
-        $builder = M::mock('EdwinFadilah\NeoEloquent\Eloquent\Builder[get]', array($query));
+        $builder = M::mock('CheHC\NeoEloquent\Eloquent\Builder[get]', array($query));
 
         $records[] = array('id' => 1902, 'name' => 'taylor', 'age' => 26);
         $records[] = array('id' => 6252, 'name' => 'dayle', 'age' => 28);
@@ -193,10 +193,10 @@ class EloquentBuilderTest extends TestCase {
         $resultSet = $this->createNodeResultSet($records, array('n.name', 'n.age'));
 
         $builder->getQuery()->shouldReceive('get')->once()->with(array('foo'))->andReturn($resultSet);
-        $grammar = M::mock('EdwinFadilah\NeoEloquent\Query\Grammars\CypherGrammar')->makePartial();
+        $grammar = M::mock('CheHC\NeoEloquent\Query\Grammars\CypherGrammar')->makePartial();
         $builder->getQuery()->shouldReceive('getGrammar')->andReturn($grammar);
 
-        $model = M::mock('EdwinFadilah\NeoEloquent\Eloquent\Model[getTable,getConnectionName,newInstance]');
+        $model = M::mock('CheHC\NeoEloquent\Eloquent\Model[getTable,getConnectionName,newInstance]');
         $model->shouldReceive('getTable')->once()->andReturn('foo_table');
 
         $builder->setModel($model);
@@ -215,7 +215,7 @@ class EloquentBuilderTest extends TestCase {
 
     public function testEagerLoadRelationsLoadTopLevelRelationships()
     {
-        $builder = m::mock('EdwinFadilah\NeoEloquent\Eloquent\Builder[loadRelation]', array($this->getMockQueryBuilder()));
+        $builder = m::mock('CheHC\NeoEloquent\Eloquent\Builder[loadRelation]', array($this->getMockQueryBuilder()));
         $nop1 = function() {};
         $nop2 = function() {};
         $builder->setEagerLoads(array('foo' => $nop1, 'foo.bar' => $nop2));
@@ -304,7 +304,7 @@ class EloquentBuilderTest extends TestCase {
         $builder = $this->getBuilder();
         $builder->getQuery()->shouldReceive('foobar')->once()->andReturn('foo');
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Builder', $builder->foobar());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Builder', $builder->foobar());
 
         $builder = $this->getBuilder();
         $builder->getQuery()->shouldReceive('insert')->once()->with(array('bar'))->andReturn('foo');
@@ -333,9 +333,9 @@ class EloquentBuilderTest extends TestCase {
 
     public function testNestedWhere()
     {
-        $this->markTestIncomplete('Getting error: Static method Mockery_1_EdwinFadilah_NeoEloquent_Eloquent_Model::resolveConnection() does not exist on this mock object');
+        $this->markTestIncomplete('Getting error: Static method Mockery_1_CheHC_NeoEloquent_Eloquent_Model::resolveConnection() does not exist on this mock object');
 
-        $nestedQuery = m::mock('EdwinFadilah\NeoEloquent\Eloquent\Builder');
+        $nestedQuery = m::mock('CheHC\NeoEloquent\Eloquent\Builder');
         $nestedRawQuery = $this->getMockQueryBuilder();
         $nestedQuery->shouldReceive('getQuery')->once()->andReturn($nestedRawQuery);
         $model = $this->getMockModel()->makePartial();
@@ -352,7 +352,7 @@ class EloquentBuilderTest extends TestCase {
 
     public function testDeleteOverride()
     {
-        $this->markTestIncomplete('Getting the error BadMethodCallException: Method Mockery_2_EdwinFadilah_NeoEloquent_Query_Builder::onDelete() does not exist on this mock object');
+        $this->markTestIncomplete('Getting the error BadMethodCallException: Method Mockery_2_CheHC_NeoEloquent_Query_Builder::onDelete() does not exist on this mock object');
         $builder = $this->getBuilder();
         $builder->onDelete(function($builder)
         {
@@ -430,7 +430,7 @@ class EloquentBuilderTest extends TestCase {
 
         // assign the builder's $model to our mock
         $this->builder->setModel($this->model);
-        $grammar = M::mock('EdwinFadilah\NeoEloquent\Query\Grammars\CypherGrammar')->makePartial();
+        $grammar = M::mock('CheHC\NeoEloquent\Query\Grammars\CypherGrammar')->makePartial();
         $this->query->shouldReceive('getGrammar')->andReturn($grammar);
         // put things to the test
         $found = $this->builder->find($id, $properties);
@@ -461,7 +461,7 @@ class EloquentBuilderTest extends TestCase {
 
         $resultSet = $this->createNodeResultSet($results);
 
-        $grammar = M::mock('EdwinFadilah\NeoEloquent\Query\Grammars\CypherGrammar')->makePartial();
+        $grammar = M::mock('CheHC\NeoEloquent\Query\Grammars\CypherGrammar')->makePartial();
         $this->query->shouldReceive('get')->once()->with(array('*'))->andReturn($resultSet)
                     ->shouldReceive('from')->once()->andReturn('User')
                     ->shouldReceive('getGrammar')->andReturn($grammar);
@@ -499,7 +499,7 @@ class EloquentBuilderTest extends TestCase {
 
         $resultSet = $this->createNodeResultSet($results);
 
-        $grammar = M::mock('EdwinFadilah\NeoEloquent\Query\Grammars\CypherGrammar')->makePartial();
+        $grammar = M::mock('CheHC\NeoEloquent\Query\Grammars\CypherGrammar')->makePartial();
         $this->query->shouldReceive('get')->once()->with($properties)->andReturn($resultSet)
                     ->shouldReceive('from')->once()->andReturn('User')
                     ->shouldReceive('getGrammar')->andReturn($grammar);
@@ -683,7 +683,7 @@ class EloquentBuilderTest extends TestCase {
 
     protected function getMockModel()
     {
-        $model = m::mock('EdwinFadilah\NeoEloquent\Eloquent\Model');
+        $model = m::mock('CheHC\NeoEloquent\Eloquent\Model');
         $model->shouldReceive('getKeyName')->andReturn('foo');
         $model->shouldReceive('getTable')->andReturn('foo_table');
         $model->shouldReceive('getQualifiedKeyName')->andReturn('foo');
@@ -692,7 +692,7 @@ class EloquentBuilderTest extends TestCase {
 
     protected function getMockQueryBuilder()
     {
-        $query = m::mock('EdwinFadilah\NeoEloquent\Query\Builder');
+        $query = m::mock('CheHC\NeoEloquent\Query\Builder');
         $query->shouldReceive('from')->with('foo_table');
         $query->shouldReceive('modelAsNode')->andReturn('n');
 
@@ -701,7 +701,7 @@ class EloquentBuilderTest extends TestCase {
 
     public function getMockBuilder($classname = null)
     {
-        $query = M::mock('EdwinFadilah\NeoEloquent\Query\Builder');
+        $query = M::mock('CheHC\NeoEloquent\Query\Builder');
         $query->shouldReceive('from')->andReturn('foo_table');
         $query->shouldReceive('modelAsNode')->andReturn('n');
 
@@ -717,9 +717,9 @@ class EloquentBuilderTest extends TestCase {
 // Don't ask what this is, brought in from
 // laravel/framework/tests/Databases/DatabaseEloquentBuilderTest.php
 // and it makes the tests pass, so leave it :P
-class EloquentBuilderTestModelStub extends \EdwinFadilah\NeoEloquent\Eloquent\Model {}
+class EloquentBuilderTestModelStub extends \CheHC\NeoEloquent\Eloquent\Model {}
 
-class EloquentBuilderTestScopeStub extends \EdwinFadilah\NeoEloquent\Eloquent\Model {
+class EloquentBuilderTestScopeStub extends \CheHC\NeoEloquent\Eloquent\Model {
     public function scopeApproved($query)
     {
         $query->where('foo', 'bar');

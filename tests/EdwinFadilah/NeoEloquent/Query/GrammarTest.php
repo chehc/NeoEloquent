@@ -1,14 +1,14 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Tests\Query;
+namespace CheHC\NeoEloquent\Tests\Query;
 
 
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\Processors\Processor;
 use Mockery as M;
-use EdwinFadilah\NeoEloquent\Query\Builder;
-use EdwinFadilah\NeoEloquent\Query\Grammars\Grammar;
-use EdwinFadilah\NeoEloquent\Tests\TestCase;
+use CheHC\NeoEloquent\Query\Builder;
+use CheHC\NeoEloquent\Query\Grammars\Grammar;
+use CheHC\NeoEloquent\Tests\TestCase;
 
 class GrammarTest extends TestCase {
 
@@ -41,7 +41,7 @@ class GrammarTest extends TestCase {
 
     public function testGettingIdParameterWithQueryBuilder()
     {
-    	$query = M::mock('EdwinFadilah\NeoEloquent\Query\Builder');
+    	$query = M::mock('CheHC\NeoEloquent\Query\Builder');
     	$query->from = 'user';
     	$this->grammar->setQuery($query);
     	$this->assertEquals('{iduser}', $this->grammar->parameter('id'));
@@ -49,7 +49,7 @@ class GrammarTest extends TestCase {
     	$query->from = 'post';
     	$this->assertEquals('{idpost}', $this->grammar->parameter('id'));
 
-    	$anotherQuery = M::mock('EdwinFadilah\NeoEloquent\Query\Builder');
+    	$anotherQuery = M::mock('CheHC\NeoEloquent\Query\Builder');
     	$anotherQuery->from = 'crawler';
     	$this->grammar->setQuery($anotherQuery);
     	$this->assertEquals('{idcrawler}', $this->grammar->parameter('id'));
@@ -87,7 +87,7 @@ class GrammarTest extends TestCase {
 
     public function testWrappingValue()
     {
-    	$mConnection = M::mock('EdwinFadilah\NeoEloquent\Connection');
+    	$mConnection = M::mock('CheHC\NeoEloquent\Connection');
     	$mConnection->shouldReceive('getClient');
     	$query = new Builder($mConnection, $this->grammar, $this->processor);
 
@@ -121,7 +121,7 @@ class GrammarTest extends TestCase {
     	$this->assertEquals('idn', $this->grammar->getIdReplacement('id'));
     	$this->assertEquals('iduser', $this->grammar->getIdReplacement('id(user)'));
 
-    	$query = M::mock('EdwinFadilah\NeoEloquent\Query\Builder');
+    	$query = M::mock('CheHC\NeoEloquent\Query\Builder');
     	$query->from = 'cola';
     	$this->grammar->setQuery($query);
 

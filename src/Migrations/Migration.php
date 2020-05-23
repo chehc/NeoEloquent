@@ -1,6 +1,6 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Migrations;
+namespace CheHC\NeoEloquent\Migrations;
 
 abstract class Migration {
 

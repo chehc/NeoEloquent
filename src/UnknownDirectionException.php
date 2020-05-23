@@ -1,5 +1,5 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent;
+namespace CheHC\NeoEloquent;
 
 class UnknownDirectionException extends \Exception {}

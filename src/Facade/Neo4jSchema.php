@@ -1,12 +1,12 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Facade;
+namespace CheHC\NeoEloquent\Facade;
 
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \EdwinFadilah\NeoEloquent\Schema\Builder
+ * @see \CheHC\NeoEloquent\Schema\Builder
  */
 class Neo4jSchema extends Facade {
 
@@ -14,7 +14,7 @@ class Neo4jSchema extends Facade {
      * Get a schema builder instance for a connection.
      *
      * @param  string  $name
-     * @return \EdwinFadilah\NeoEloquent\Schema\Builder
+     * @return \CheHC\NeoEloquent\Schema\Builder
      */
     public static function connection($name)
     {

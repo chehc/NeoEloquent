@@ -1,12 +1,12 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Migrations;
+namespace CheHC\NeoEloquent\Migrations;
 
 
 use Illuminate\Database\Migrations\MigrationRepositoryInterface;
 use Illuminate\Database\ConnectionResolverInterface;
-use EdwinFadilah\NeoEloquent\Schema\Builder as SchemaBuilder;
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Schema\Builder as SchemaBuilder;
+use CheHC\NeoEloquent\Eloquent\Model;
 
 class DatabaseMigrationRepository implements MigrationRepositoryInterface {
 
@@ -20,7 +20,7 @@ class DatabaseMigrationRepository implements MigrationRepositoryInterface {
     /**
      * The migration model.
      *
-     * @var \EdwinFadilah\NeoEloquent\Eloquent\Model
+     * @var \CheHC\NeoEloquent\Eloquent\Model
      */
     protected $model;
 
@@ -34,8 +34,8 @@ class DatabaseMigrationRepository implements MigrationRepositoryInterface {
 
     /**
      * @param  \Illuminate\Database\ConnectionResolverInterface  $resolver
-     * @param  \EdwinFadilah\NeoEloquent\Schema\Builder  $schema
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Model  $model
+     * @param  \CheHC\NeoEloquent\Schema\Builder  $schema
+     * @param  \CheHC\NeoEloquent\Eloquent\Model  $model
      * @return void
      */
     public function __construct(ConnectionResolverInterface $resolver, SchemaBuilder $schema, Model $model)
@@ -114,7 +114,7 @@ class DatabaseMigrationRepository implements MigrationRepositoryInterface {
     /**
      * Get a query builder for the migration node (table).
      *
-     * @return \EdwinFadilah\NeoEloquent\Query\Builder
+     * @return \CheHC\NeoEloquent\Query\Builder
      */
     protected function label()
     {
@@ -172,7 +172,7 @@ class DatabaseMigrationRepository implements MigrationRepositoryInterface {
     /**
      * Set migration model.
      *
-     * @param \EdwinFadilah\NeoEloquent\Eloquent\Model  $model
+     * @param \CheHC\NeoEloquent\Eloquent\Model  $model
      */
     public function setMigrationModel(Model $model)
     {
@@ -182,7 +182,7 @@ class DatabaseMigrationRepository implements MigrationRepositoryInterface {
     /**
      * Get migration model.
      *
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Model
+     * @return \CheHC\NeoEloquent\Eloquent\Model
      */
     public function getMigrationModel()
     {

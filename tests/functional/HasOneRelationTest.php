@@ -1,11 +1,11 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Tests\Functional\Relations\HasOne;
+namespace CheHC\NeoEloquent\Tests\Functional\Relations\HasOne;
 
 
 use Mockery as M;
-use EdwinFadilah\NeoEloquent\Tests\TestCase;
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Tests\TestCase;
+use CheHC\NeoEloquent\Eloquent\Model;
 
 class User extends Model {
 
@@ -14,7 +14,7 @@ class User extends Model {
 
     public function profile()
     {
-        return $this->hasOne('EdwinFadilah\NeoEloquent\Tests\Functional\Relations\HasOne\Profile', 'PROFILE');
+        return $this->hasOne('CheHC\NeoEloquent\Tests\Functional\Relations\HasOne\Profile', 'PROFILE');
     }
 }
 
@@ -58,7 +58,7 @@ class HasOneRelationTest extends TestCase {
 
         $relation = $user->profile()->save($profile);
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $relation);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $relation);
         $this->assertEquals($profile->toArray(), $user->profile->toArray());
         $this->assertTrue($relation->delete());
     }
@@ -73,7 +73,7 @@ class HasOneRelationTest extends TestCase {
 
         $found = User::find($user->id);
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $relation);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $relation);
         $this->assertEquals($profile->toArray(), $found->profile->toArray());
         $this->assertTrue($relation->delete());
     }
@@ -88,7 +88,7 @@ class HasOneRelationTest extends TestCase {
         $found = User::with('profile')->find($user->id);
         $relations = $found->getRelations();
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $relation);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $relation);
         $this->assertArrayHasKey('profile', $relations);
         $this->assertEquals($profile->toArray(), $relations['profile']->toArray());
         $this->assertTrue($relation->delete());
@@ -100,7 +100,7 @@ class HasOneRelationTest extends TestCase {
         $profile = Profile::create(['guid' => uniqid(), 'service' => 'twitter']);
 
         $relation = $user->profile()->save($profile);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $relation);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $relation);
 
         $this->assertInstanceOf('Carbon\Carbon', $relation->created_at, 'make sure we set the created_at timestamp');
         $this->assertInstanceOf('Carbon\Carbon', $relation->updated_at, 'make sure we set the updated_at timestamp');
@@ -126,7 +126,7 @@ class HasOneRelationTest extends TestCase {
 
         $retrieved = $user->profile()->edge($profile);
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $retrieved);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $retrieved);
         $this->assertTrue($retrieved->active);
         $this->assertTrue($retrieved->delete());
     }
@@ -149,7 +149,7 @@ class HasOneRelationTest extends TestCase {
         $this->assertNull($withPr);
 
         $withCv = $user->profile()->edge($cv);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $withCv);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $withCv);
         $this->assertEquals($withCv->use, 'official');
         $this->assertTrue($withCv->delete());
     }
@@ -165,7 +165,7 @@ class HasOneRelationTest extends TestCase {
 
         $retrieved = $user->profile()->edge();
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $retrieved);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $retrieved);
         $this->assertEquals($relation->id, $retrieved->id);
         $this->assertEquals($relation->toArray(), $retrieved->toArray());
         $this->assertTrue($relation->delete());

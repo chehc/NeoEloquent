@@ -1,6 +1,6 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Tests;
+namespace CheHC\NeoEloquent\Tests;
 
 
 use Mockery as M;
@@ -36,7 +36,7 @@ class ConnectionTest extends TestCase {
     {
         $c = $this->getConnectionWithConfig('neo4j');
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Connection', $c);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Connection', $c);
     }
 
     public function testConnectionClientInstance()
@@ -93,7 +93,7 @@ class ConnectionTest extends TestCase {
 
         $grammar = $c->getQueryGrammar();
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Query\Grammars\CypherGrammar', $grammar);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Query\Grammars\CypherGrammar', $grammar);
     }
 
     public function testPrepareBindings()
@@ -104,7 +104,7 @@ class ConnectionTest extends TestCase {
         $bindings = array('test' => $date);
 
         $conn = $this->getMockConnection();
-        $grammar = m::mock('EdwinFadilah\NeoEloquent\Query\Grammars\CypherGrammar');
+        $grammar = m::mock('CheHC\NeoEloquent\Query\Grammars\CypherGrammar');
         $grammar->shouldReceive('getDateFormat')->once()->andReturn('foo');
         $conn->setQueryGrammar($grammar);
         $result = $conn->prepareBindings($bindings);
@@ -494,10 +494,10 @@ class ConnectionTest extends TestCase {
     public function testFromCreatesNewQueryBuilder()
     {
         $conn = $this->getMockConnection();
-        $conn->setQueryGrammar(M::mock('EdwinFadilah\NeoEloquent\Query\Grammars\CypherGrammar')->makePartial());
+        $conn->setQueryGrammar(M::mock('CheHC\NeoEloquent\Query\Grammars\CypherGrammar')->makePartial());
         $conn->setPostProcessor(M::mock('Illuminate\Database\Query\Processors\Processor')->makePartial());
         $builder = $conn->table('User');
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Query\Builder', $builder);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Query\Builder', $builder);
         $this->assertEquals('User', $builder->from);
     }
 
@@ -526,7 +526,7 @@ class ConnectionTest extends TestCase {
     protected function getMockConnection($methods = array())
     {
         $defaults = array('getDefaultQueryGrammar', 'getDefaultPostProcessor', 'getDefaultSchemaGrammar');
-        return $this->getMock('EdwinFadilah\NeoEloquent\Connection', array_merge($defaults, $methods), array());
+        return $this->getMock('CheHC\NeoEloquent\Connection', array_merge($defaults, $methods), array());
     }
 
 }

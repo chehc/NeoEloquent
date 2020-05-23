@@ -1,6 +1,6 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Eloquent\Relations;
+namespace CheHC\NeoEloquent\Eloquent\Relations;
 
 interface RelationInterface {
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent;
+namespace CheHC\NeoEloquent;
 
 
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
-use EdwinFadilah\NeoEloquent\Schema\Grammars\CypherGrammar;
+use CheHC\NeoEloquent\Schema\Grammars\CypherGrammar;
 
 class NeoEloquentServiceProvider extends ServiceProvider {
 
@@ -54,8 +54,8 @@ class NeoEloquentServiceProvider extends ServiceProvider {
         $this->app->resolving(function($app){
             if (class_exists('Illuminate\Foundation\AliasLoader')) {
                 $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-                $loader->alias('NeoEloquent', 'EdwinFadilah\NeoEloquent\Eloquent\Model');
-                $loader->alias('Neo4jSchema', 'EdwinFadilah\NeoEloquent\Facade\Neo4jSchema');
+                $loader->alias('NeoEloquent', 'CheHC\NeoEloquent\Eloquent\Model');
+                $loader->alias('Neo4jSchema', 'CheHC\NeoEloquent\Facade\Neo4jSchema');
             }
         });
 
@@ -82,7 +82,7 @@ class NeoEloquentServiceProvider extends ServiceProvider {
      */
     protected function registerMigration()
     {
-        $this->app->register('EdwinFadilah\NeoEloquent\MigrationServiceProvider');
+        $this->app->register('CheHC\NeoEloquent\MigrationServiceProvider');
     }
 
     /**

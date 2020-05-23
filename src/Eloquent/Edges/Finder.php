@@ -1,11 +1,11 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Eloquent\Edges;
+namespace CheHC\NeoEloquent\Eloquent\Edges;
 
 use Everyman\Neo4j\Path;
 use Everyman\Neo4j\Relationship;
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
-use EdwinFadilah\NeoEloquent\Eloquent\Builder;
+use CheHC\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 
 class Finder extends Delegate {
@@ -13,9 +13,9 @@ class Finder extends Delegate {
     /**
      * Create a new Finder instance.
      *
-     * @param \EdwinFadilah\NeoEloquent\Eloquent\Builder $query
-     * @param \EdwinFadilah\NeoEloquent\Eloquent\Model   $parent
-     * @param \EdwinFadilah\NeoEloquent\Eloquent\Model   $related
+     * @param \CheHC\NeoEloquent\Eloquent\Builder $query
+     * @param \CheHC\NeoEloquent\Eloquent\Model   $parent
+     * @param \CheHC\NeoEloquent\Eloquent\Model   $related
      * @param string  $type
      */
     public function __construct(Builder $query)
@@ -26,8 +26,8 @@ class Finder extends Delegate {
     /**
      * Get the direct relation between two models.
      *
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Model  $parentModel
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Model  $relatedModel
+     * @param  \CheHC\NeoEloquent\Eloquent\Model  $parentModel
+     * @param  \CheHC\NeoEloquent\Eloquent\Model  $relatedModel
      * @param  string $direction
      * @return \Everyman\Neo4j\Relationship
      */
@@ -64,10 +64,10 @@ class Finder extends Delegate {
     /**
      * Get the first edge relationship between two models.
      *
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Model  $parentModel
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Model  $relatedModel
+     * @param  \CheHC\NeoEloquent\Eloquent\Model  $parentModel
+     * @param  \CheHC\NeoEloquent\Eloquent\Model  $relatedModel
      * @param  string $direction
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Edges\Edge[In|Out]|null
+     * @return \CheHC\NeoEloquent\Eloquent\Edges\Edge[In|Out]|null
      */
     public function first(Model $parentModel, Model $relatedModel, $type, $direction = 'any')
     {
@@ -85,8 +85,8 @@ class Finder extends Delegate {
     /**
      * Get the edges between two models.
      *
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Model  $parent
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Model  $related
+     * @param  \CheHC\NeoEloquent\Eloquent\Model  $parent
+     * @param  \CheHC\NeoEloquent\Eloquent\Model  $related
      * @param  string|array $type
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -112,12 +112,12 @@ class Finder extends Delegate {
     /**
      * Get the first HyperEdge between three models.
      *
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Model $parent
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Model $related
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Model $morph
+     * @param  \CheHC\NeoEloquent\Eloquent\Model $parent
+     * @param  \CheHC\NeoEloquent\Eloquent\Model $related
+     * @param  \CheHC\NeoEloquent\Eloquent\Model $morph
      * @param  string $type
      * @param  string $morphType
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Edges\HyperEdge
+     * @return \CheHC\NeoEloquent\Eloquent\Edges\HyperEdge
      */
     public function hyperFirst($parent, $related, $morph, $type, $morphType)
     {
@@ -135,8 +135,8 @@ class Finder extends Delegate {
      * Get the direction of a relationship out of a Relation instance.
      *
      * @param  \Everyman\Neo4j\Relationship $relation
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Model        $parent
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Model        $related
+     * @param  \CheHC\NeoEloquent\Eloquent\Model        $parent
+     * @param  \CheHC\NeoEloquent\Eloquent\Model        $related
      * @return string Either 'in' or 'out'
      */
     public function directionFromRelation(Relationship $relation, Model $parent, Model $related)
@@ -162,7 +162,7 @@ class Finder extends Delegate {
      *
      * @param  \Everyman\Neo4j\Relationship $relation
      * @param  string $direction
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Edges\Edge[In|Out]
+     * @return \CheHC\NeoEloquent\Eloquent\Edges\Edge[In|Out]
      */
     public function edgeFromRelationWithDirection(Relationship $relation, Model $parent, Model $related, $direction)
     {

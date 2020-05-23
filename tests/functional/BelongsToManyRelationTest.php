@@ -1,11 +1,11 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Tests\Functional\Relations\BelongsToMany;
+namespace CheHC\NeoEloquent\Tests\Functional\Relations\BelongsToMany;
 
 
 use Mockery as M;
-use EdwinFadilah\NeoEloquent\Tests\TestCase;
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Tests\TestCase;
+use CheHC\NeoEloquent\Eloquent\Model;
 
 class User extends Model {
 
@@ -15,7 +15,7 @@ class User extends Model {
 
     public function roles()
     {
-        return $this->belongsToMany('EdwinFadilah\NeoEloquent\Tests\Functional\Relations\BelongsToMany\Role', 'HAS_ROLE');
+        return $this->belongsToMany('CheHC\NeoEloquent\Tests\Functional\Relations\BelongsToMany\Role', 'HAS_ROLE');
     }
 }
 
@@ -27,7 +27,7 @@ class Role extends Model {
 
     public function users()
     {
-        return $this->belongsToMany('EdwinFadilah\NeoEloquent\Tests\Functional\Relations\BelongsToMany\User', 'HAS_ROLE');
+        return $this->belongsToMany('CheHC\NeoEloquent\Tests\Functional\Relations\BelongsToMany\User', 'HAS_ROLE');
     }
 }
 
@@ -63,7 +63,7 @@ class BelongsToManyRelationTest extends TestCase {
         $role = new Role(['title' => 'Master']);
         $relation = $user->roles()->save($role);
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeIn', $relation);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeIn', $relation);
         $this->assertTrue($relation->exists());
         $this->assertGreaterThanOrEqual(0, $relation->id);
 
@@ -76,7 +76,7 @@ class BelongsToManyRelationTest extends TestCase {
         $role = Role::create(['title' => 'Master']);
         $relation = $user->roles()->attach($role->id);
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeIn', $relation);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeIn', $relation);
         $this->assertTrue($relation->exists());
         $this->assertGreaterThan(0, $relation->id);
 
@@ -96,7 +96,7 @@ class BelongsToManyRelationTest extends TestCase {
 
         $relations->each(function($relation)
         {
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeIn', $relation);
+            $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeIn', $relation);
             $this->assertTrue($relation->exists());
             $this->assertGreaterThan(0, $relation->id);
 
@@ -110,7 +110,7 @@ class BelongsToManyRelationTest extends TestCase {
         $role = Role::create(['title' => 'Master']);
 
         $relation = $user->roles()->attach($role);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeIn', $relation);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeIn', $relation);
         $this->assertTrue($relation->exists());
         $this->assertGreaterThan(0, $relation->id);
 
@@ -134,7 +134,7 @@ class BelongsToManyRelationTest extends TestCase {
 
         $relations->each(function($relation)
         {
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeIn', $relation);
+            $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeIn', $relation);
             $this->assertTrue($relation->exists());
             $this->assertGreaterThan(0, $relation->id);
 
@@ -159,12 +159,12 @@ class BelongsToManyRelationTest extends TestCase {
 
         $edgeIn = $user->roles()->edge($role);
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeIn', $edgeIn);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeIn', $edgeIn);
         $this->assertTrue($edgeIn->exists());
         $this->assertGreaterThan(0, $edgeIn->id);
 
         $edgeIn = $role->users()->edge($user);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $edgeIn);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $edgeIn);
         $this->assertTrue($edgeIn->exists());
         $this->assertGreaterThan(0, $edgeIn->id);
 
@@ -177,7 +177,7 @@ class BelongsToManyRelationTest extends TestCase {
         $role = Role::create(['title' => 'Master']);
 
         $relation = $user->roles()->attach($role->id);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeIn', $relation);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeIn', $relation);
         $this->assertTrue($relation->exists());
         $this->assertGreaterThan(0, $relation->id);
 
@@ -202,7 +202,7 @@ class BelongsToManyRelationTest extends TestCase {
         // make sure they were successfully saved
         $relations->each(function($relation)
         {
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeIn', $relation);
+            $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeIn', $relation);
             $this->assertTrue($relation->exists());
             $this->assertGreaterThan(0, $relation->id);
         });
@@ -314,7 +314,7 @@ class BelongsToManyRelationTest extends TestCase {
 
         foreach ($user->roles as $role)
         {
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\Relations\BelongsToMany\Role', $role);
+            $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\Relations\BelongsToMany\Role', $role);
             $this->assertTrue($role->exists);
             $this->assertGreaterThan(0, $role->id);
         }

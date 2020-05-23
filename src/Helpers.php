@@ -1,6 +1,6 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent;
+namespace CheHC\NeoEloquent;
 
 
 class Helpers {

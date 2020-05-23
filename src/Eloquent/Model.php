@@ -1,22 +1,22 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Eloquent;
+namespace CheHC\NeoEloquent\Eloquent;
 
 
-use EdwinFadilah\NeoEloquent\Helpers;
+use CheHC\NeoEloquent\Helpers;
 use Illuminate\Database\Eloquent\Collection;
-use EdwinFadilah\NeoEloquent\Eloquent\Relations\HasOne;
-use EdwinFadilah\NeoEloquent\Eloquent\Relations\HasMany;
-use EdwinFadilah\NeoEloquent\Eloquent\Relations\MorphTo;
-use EdwinFadilah\NeoEloquent\Eloquent\Relations\BelongsTo;
-use EdwinFadilah\NeoEloquent\Eloquent\Relations\MorphMany;
-use EdwinFadilah\NeoEloquent\Eloquent\Relations\HyperMorph;
-use EdwinFadilah\NeoEloquent\Eloquent\Relations\OneRelation;
-use EdwinFadilah\NeoEloquent\Query\Builder as QueryBuilder;
-use EdwinFadilah\NeoEloquent\Eloquent\Relations\MorphedByOne;
-use EdwinFadilah\NeoEloquent\Eloquent\Relations\BelongsToMany;
+use CheHC\NeoEloquent\Eloquent\Relations\HasOne;
+use CheHC\NeoEloquent\Eloquent\Relations\HasMany;
+use CheHC\NeoEloquent\Eloquent\Relations\MorphTo;
+use CheHC\NeoEloquent\Eloquent\Relations\BelongsTo;
+use CheHC\NeoEloquent\Eloquent\Relations\MorphMany;
+use CheHC\NeoEloquent\Eloquent\Relations\HyperMorph;
+use CheHC\NeoEloquent\Eloquent\Relations\OneRelation;
+use CheHC\NeoEloquent\Query\Builder as QueryBuilder;
+use CheHC\NeoEloquent\Eloquent\Relations\MorphedByOne;
+use CheHC\NeoEloquent\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Model as IlluminateModel;
-use EdwinFadilah\NeoEloquent\Eloquent\Builder as EloquentBuilder;
+use CheHC\NeoEloquent\Eloquent\Builder as EloquentBuilder;
 
 abstract class Model extends IlluminateModel {
 
@@ -53,8 +53,8 @@ abstract class Model extends IlluminateModel {
      * @override
      * Create a new Eloquent query builder for the model.
      *
-     * @param  \EdwinFadilah\NeoEloquent\Query\Builder $query
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Builder|static
+     * @param  \CheHC\NeoEloquent\Query\Builder $query
+     * @return \CheHC\NeoEloquent\Eloquent\Builder|static
      */
     public function newEloquentBuilder($query)
     {
@@ -65,7 +65,7 @@ abstract class Model extends IlluminateModel {
      * @override
      * Get a new query builder instance for the connection.
      *
-     * @return \EdwinFadilah\NeoEloquent\Query\Builder
+     * @return \CheHC\NeoEloquent\Query\Builder
      */
     protected function newBaseQueryBuilder()
     {
@@ -224,7 +224,7 @@ abstract class Model extends IlluminateModel {
      * @param  string  $related
      * @param  string  $type
      * @param  string  $key
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Relations\HasMany
+     * @return \CheHC\NeoEloquent\Eloquent\Relations\HasMany
      */
     public function hasMany($related, $type = null, $key = null, $relation = null)
     {
@@ -259,12 +259,12 @@ abstract class Model extends IlluminateModel {
      * @param  string  $foreignKey
      * @param  string  $ownerKey
      * @param  string  $relation
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Relations\BelongsToMany
+     * @return \CheHC\NeoEloquent\Eloquent\Relations\BelongsToMany
      */
     public function belongsToMany($related, $table = null, $foreignPivotKey = null, $ownerPivotKey = null, $foreignKey = null, $ownerKey = null, $relation = null)
     {
         // To escape the error:
-        // PHP Strict standards:  Declaration of EdwinFadilah\NeoEloquent\Eloquent\Model::belongsToMany() should be
+        // PHP Strict standards:  Declaration of CheHC\NeoEloquent\Eloquent\Model::belongsToMany() should be
         //      compatible with Illuminate\Database\Eloquent\Model::belongsToMany()
         // We'll just map them in with the variables we want.
         $type     = $table;
@@ -305,13 +305,13 @@ abstract class Model extends IlluminateModel {
      * @override
      * Create a new HyperMorph relationship.
      *
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Model  $model
+     * @param  \CheHC\NeoEloquent\Eloquent\Model  $model
      * @param  string $related
      * @param  string $type
      * @param  string $morphType
      * @param  string $relation
      * @param  string $key
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Relations\HyperMorph
+     * @return \CheHC\NeoEloquent\Eloquent\Relations\HyperMorph
      */
     public function hyperMorph($model, $related, $type = null, $morphType = null, $relation = null, $key = null)
     {
@@ -355,12 +355,12 @@ abstract class Model extends IlluminateModel {
      * @param  string  $type
      * @param  string  $id
      * @param  string  $localKey
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Relations\MorphMany
+     * @return \CheHC\NeoEloquent\Eloquent\Relations\MorphMany
      */
     public function morphMany($related, $name, $type = null, $id = null, $localKey = null)
     {
         // To escape the error:
-        // Strict standards: Declaration of EdwinFadilah\NeoEloquent\Eloquent\Model::morphMany() should be
+        // Strict standards: Declaration of CheHC\NeoEloquent\Eloquent\Model::morphMany() should be
         //          compatible with Illuminate\Database\Eloquent\Model::morphMany()
         // We'll just map them in with the variables we want.
         $relationType = $name;
@@ -402,11 +402,11 @@ abstract class Model extends IlluminateModel {
      * @override
      * Create an inverse one-to-one polymorphic relationship with specified model and relation.
      *
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Model $related
+     * @param  \CheHC\NeoEloquent\Eloquent\Model $related
      * @param  string $type
      * @param  string $key
      * @param  string $relation
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Relations\MorphedByOne
+     * @return \CheHC\NeoEloquent\Eloquent\Relations\MorphedByOne
      */
     public function morphedByOne($related, $type, $key = null, $relation = null)
     {

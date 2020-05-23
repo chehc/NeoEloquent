@@ -1,13 +1,13 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations;
+namespace CheHC\NeoEloquent\Tests\Functional\QueryingRelations;
 
 
 use DateTime;
 use Mockery as M;
 use Carbon\Carbon;
-use EdwinFadilah\NeoEloquent\Tests\TestCase;
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Tests\TestCase;
+use CheHC\NeoEloquent\Eloquent\Model;
 
 class QueryingRelationsTest extends TestCase {
 
@@ -115,7 +115,7 @@ class QueryingRelationsTest extends TestCase {
             $q->where('id', $role->getKey());
         })->first();
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\User', $found);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\User', $found);
         $this->assertEquals($user->toArray(), $found->toArray());
     }
 
@@ -131,7 +131,7 @@ class QueryingRelationsTest extends TestCase {
             $q->where('id', $role->id);
         })->where('id', $user->id)->first();
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\User', $found);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\User', $found);
         $this->assertEquals($user->toArray(), $found->toArray());
     }
 
@@ -148,7 +148,7 @@ class QueryingRelationsTest extends TestCase {
             ->whereHas('account', function($q) use($account) { $q->where('id', $account->id); })
             ->where('id', $user->id)->first();
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\User', $found);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\User', $found);
         $this->assertEquals($user->toArray(), $found->toArray());
     }
 
@@ -157,12 +157,12 @@ class QueryingRelationsTest extends TestCase {
         $account = ['guid' => uniqid()];
         $user = User::createWith(['name' => 'Misteek'], compact('account'));
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\User', $user);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\User', $user);
         $this->assertTrue($user->exists);
         $this->assertGreaterThanOrEqual(0, $user->id);
 
         $related = $user->account;
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Account', $related);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Account', $related);
         $this->assertNotNull($related->created_at);
         $this->assertNotNull($related->updated_at);
 
@@ -187,13 +187,13 @@ class QueryingRelationsTest extends TestCase {
 
         $role = Role::createWith($role, compact('permissions'));
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Role', $role);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Role', $role);
         $this->assertTrue($role->exists);
         $this->assertGreaterThanOrEqual(0, $role->id);
 
         foreach ($role->permissions as $key => $permission)
         {
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Permission', $permission);
+            $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Permission', $permission);
             $this->assertGreaterThan(0, $permission->id);
             $this->assertNotNull($permission->created_at);
             $this->assertNotNull($permission->updated_at);
@@ -244,13 +244,13 @@ class QueryingRelationsTest extends TestCase {
 
         $post = Post::createWith($post, compact('photos', 'videos'));
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Post', $post);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Post', $post);
         $this->assertTrue($post->exists);
         $this->assertGreaterThanOrEqual(0, $post->id);
 
         foreach ($post->photos as $key => $photo)
         {
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Photo', $photo);
+            $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Photo', $photo);
             $this->assertGreaterThan(0, $photo->id);
             $this->assertNotNull($photo->created_at);
             $this->assertNotNull($photo->updated_at);
@@ -262,7 +262,7 @@ class QueryingRelationsTest extends TestCase {
         }
 
         $video = $post->videos->first();
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Video', $video);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Video', $video);
         $this->assertNotNull($video->created_at);
         $this->assertNotNull($video->updated_at);
         $attrs = $video->toArray();
@@ -277,7 +277,7 @@ class QueryingRelationsTest extends TestCase {
         $user = ['name' => 'Some Name'];
         $account = Account::createWith(['guid' => 'globalid'], compact('user'));
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Account', $account);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Account', $account);
         $this->assertTrue($account->exists);
         $this->assertGreaterThanOrEqual(0, $account->id);
 
@@ -296,7 +296,7 @@ class QueryingRelationsTest extends TestCase {
         $users = new User(['name' => 'safastak']);
         $role = Role::createWith(['alias'=>'admin'], compact('users'));
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Role', $role);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Role', $role);
         $this->assertTrue($role->exists);
         $this->assertGreaterThanOrEqual(0, $role->id);
 
@@ -322,7 +322,7 @@ class QueryingRelationsTest extends TestCase {
         $tags = [$tag1, $tag2];
         $post = Post::createWith(['title' => '...', 'body' => '...'], compact('tags'));
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Post', $post);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Post', $post);
 
         $related = $post->tags;
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $related);
@@ -337,7 +337,7 @@ class QueryingRelationsTest extends TestCase {
     /**
      * Regression test for issue where createWith ignores creating timestamps for record.
      *
-     * @see  https://github.com/EdwinFadilah/NeoEloquent/issues/17
+     * @see  https://github.com/CheHC/NeoEloquent/issues/17
      */
     public function testCreateWithAddsTimestamps()
     {
@@ -347,7 +347,7 @@ class QueryingRelationsTest extends TestCase {
 
         $post = Post::createWith(['title' => '...', 'body' => '...'], compact('tags'));
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Post', $post);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Post', $post);
 
         $this->assertNotNull($post->created_at);
         $this->assertNotNull($post->updated_at);
@@ -371,7 +371,7 @@ class QueryingRelationsTest extends TestCase {
 
         $post = Post::createWith(['title' => '...', 'body' => '...', 'mother' => 'something', 'father' => 'wanted'], compact('tags'));
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Post', $post);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Post', $post);
 
         $this->assertNull($post->mother);
         $this->assertNull($post->father);
@@ -397,7 +397,7 @@ class QueryingRelationsTest extends TestCase {
 
         $post = Post::createWith(['title' => false, 'body' => true, 'summary' => null], compact('tags'));
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Post', $post);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Post', $post);
 
         $this->assertFalse($post->title);
         $this->assertTrue($post->body);
@@ -424,7 +424,7 @@ class QueryingRelationsTest extends TestCase {
         $tags = [$tag1->getKey(), $tag2->getKey()];
         $post = Post::createWith(['title' => '...', 'body' => '...'], compact('tags'));
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Post', $post);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Post', $post);
 
         $related = $post->tags;
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $related);
@@ -442,7 +442,7 @@ class QueryingRelationsTest extends TestCase {
         $tag  = Tag::create(['title' => 'php']);
         $post = Post::createWith(['title' => '...', 'body' => '...'], ['tags' => $tag->getKey()]);
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Post', $post);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Post', $post);
 
         $related = $post->tags;
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $related);
@@ -455,7 +455,7 @@ class QueryingRelationsTest extends TestCase {
         $tag  = Tag::create(['title' => 'php']);
         $post = Post::createWith(['title' => '...', 'body' => '...'], ['tags' => $tag]);
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Post', $post);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Post', $post);
 
         $related = $post->tags;
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $related);
@@ -474,7 +474,7 @@ class QueryingRelationsTest extends TestCase {
 
         $post = Post::createWith(['title' => 'foo', 'body' => 'bar'], compact('tags'));
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Post', $post);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Post', $post);
         $related = $post->tags;
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $related);
         $this->assertEquals(3, count($related));
@@ -482,13 +482,13 @@ class QueryingRelationsTest extends TestCase {
         $tags = Tag::all();
 
         $another = Post::createWith(['title' => 'foo', 'body' => 'bar'], compact('tags'));
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Post', $another);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Post', $another);
         $this->assertEquals(3, count($related));
     }
 
     /**
      * Regression for issue #9
-     * @see https://github.com/EdwinFadilah/NeoEloquent/issues/9
+     * @see https://github.com/CheHC/NeoEloquent/issues/9
      */
     public function testCreateModelWithMultiRelationOfSameRelatedModel()
     {
@@ -497,7 +497,7 @@ class QueryingRelationsTest extends TestCase {
             'cover'  => ['url' => 'my.cover.url']
         ]);
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Post', $post);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Post', $post);
 
         $this->assertEquals('my.photo.url', $post->photos->first()->url);
         $this->assertEquals('my.cover.url', $post->cover->url);
@@ -506,7 +506,7 @@ class QueryingRelationsTest extends TestCase {
     /**
      * Regression test for creating recursively connected models.
      *
-     * @see https://github.com/EdwinFadilah/NeoEloquent/issues/7
+     * @see https://github.com/CheHC/NeoEloquent/issues/7
      */
     public function testCreatingModelWithExistingRecursivelyRelatedModel()
     {
@@ -517,7 +517,7 @@ class QueryingRelationsTest extends TestCase {
             'colleagues' => [$morgan, $jon]
         ]);
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\User', $user);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\User', $user);
     }
 
     public function testEagerLoadingNestedRelationship()
@@ -533,7 +533,7 @@ class QueryingRelationsTest extends TestCase {
             ->whereHas('roles', function($q) use($role) { $q->where('id', $role->id); })
             ->first();
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\User', $found);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\User', $found);
         $this->assertArrayHasKey('roles', $found->getRelations());
         $this->assertArrayHasKey('permissions', $found->roles->first()->getRelations());
         $this->assertEquals($user->toArray(), $found->toArray());
@@ -552,7 +552,7 @@ class QueryingRelationsTest extends TestCase {
             ->whereHas('users', function($q) use($user) { $q->where('id', $user->getKey()); })
             ->first();
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Role', $roleFound);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Role', $roleFound);
         $this->assertArrayHasKey('users', $roleFound->getRelations());
         $this->assertArrayHasKey('account', $roleFound->users->first()->getRelations());
         $this->assertEquals('anID', $roleFound->users->first()->account->guid);
@@ -573,7 +573,7 @@ class QueryingRelationsTest extends TestCase {
             ->whereHas('users', function($q) use($user) { $q->where('id', $user->getKey()); })
             ->first();
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Role', $roleFound);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Role', $roleFound);
         $this->assertArrayHasKey('users', $roleFound->getRelations());
         $this->assertArrayHasKey('organization', $roleFound->users->first()->getRelations());
         $this->assertEquals('Pokemon', $roleFound->users->first()->organization->name);
@@ -592,7 +592,7 @@ class QueryingRelationsTest extends TestCase {
         $read = Role::where('alias', 'read')->first();
         $this->assertEquals('read', $read->alias);
         $readFound = $user->roles()->where('alias', 'read')->first();
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Role', $readFound);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Role', $readFound);
         $this->assertEquals($read, $readFound);
 
         $write = Role::where('alias', 'write')->first();
@@ -606,7 +606,7 @@ class QueryingRelationsTest extends TestCase {
         $user = User::createWith(['name' => 'captain'], ['colleagues' => ['name' => 'acme']]);
         $acme = User::where('name', 'acme')->first();
         $found = $user->colleagues()->where('name', 'acme')->first();
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\User', $found);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\User', $found);
 
         $this->assertEquals($acme, $found);
     }
@@ -681,22 +681,22 @@ class User extends Model {
 
     public function roles()
     {
-        return $this->hasMany('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Role', 'PERMITTED');
+        return $this->hasMany('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Role', 'PERMITTED');
     }
 
     public function account()
     {
-        return $this->hasOne('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Account', 'ACCOUNT');
+        return $this->hasOne('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Account', 'ACCOUNT');
     }
 
     public function colleagues()
     {
-        return $this->hasMany('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\User', 'COLLEAGUE_OF');
+        return $this->hasMany('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\User', 'COLLEAGUE_OF');
     }
 
     public function organization()
     {
-        return $this->belongsTo('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Organization', 'MEMBER_OF');
+        return $this->belongsTo('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Organization', 'MEMBER_OF');
     }
 }
 
@@ -708,7 +708,7 @@ class Account extends Model {
 
     public function user()
     {
-        return $this->belongsTo('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\User', 'ACCOUNT');
+        return $this->belongsTo('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\User', 'ACCOUNT');
     }
 }
 
@@ -720,7 +720,7 @@ class Organization extends Model {
 
     public function members()
     {
-        return $this->hasMany('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\User', 'MEMBER_OF');
+        return $this->hasMany('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\User', 'MEMBER_OF');
     }
 }
 
@@ -732,12 +732,12 @@ class Role extends Model {
 
     public function users()
     {
-        return $this->belongsToMany('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\User', 'PERMITTED');
+        return $this->belongsToMany('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\User', 'PERMITTED');
     }
 
     public function permissions()
     {
-        return $this->hasMany('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Permission', 'ALLOWS');
+        return $this->hasMany('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Permission', 'ALLOWS');
     }
 }
 
@@ -749,7 +749,7 @@ class Permission extends Model {
 
     public function roles()
     {
-        return $this->belongsToMany('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Role', 'ALLOWS');
+        return $this->belongsToMany('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Role', 'ALLOWS');
     }
 }
 
@@ -761,27 +761,27 @@ class Post extends Model {
 
     public function photos()
     {
-        return $this->hasMany('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Photo', 'PHOTO');
+        return $this->hasMany('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Photo', 'PHOTO');
     }
 
     public function cover()
     {
-        return $this->hasOne('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Photo', 'COVER');
+        return $this->hasOne('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Photo', 'COVER');
     }
 
     public function videos()
     {
-        return $this->hasMany('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Video', 'VIDEO');
+        return $this->hasMany('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Video', 'VIDEO');
     }
 
     public function comments()
     {
-        return $this->hasMany('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Comment', 'COMMENT');
+        return $this->hasMany('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Comment', 'COMMENT');
     }
 
     public function tags()
     {
-        return $this->hasMany('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Tag', 'TAG');
+        return $this->hasMany('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Tag', 'TAG');
     }
 }
 
@@ -814,6 +814,6 @@ class Comment extends Model {
 
     public function post()
     {
-        return $this->belongsTo('EdwinFadilah\NeoEloquent\Tests\Functional\QueryingRelations\Post', 'COMMENT');
+        return $this->belongsTo('CheHC\NeoEloquent\Tests\Functional\QueryingRelations\Post', 'COMMENT');
     }
 }

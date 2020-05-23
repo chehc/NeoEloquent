@@ -1,6 +1,6 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Eloquent\Concerns;
+namespace CheHC\NeoEloquent\Eloquent\Concerns;
 
 
 use Illuminate\Database\Eloquent\Concerns\QueriesRelationships as QR;

@@ -1,12 +1,12 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Tests\Functional\Events;
+namespace CheHC\NeoEloquent\Tests\Functional\Events;
 
 
 use Mockery as M;
-use EdwinFadilah\NeoEloquent\Tests\TestCase;
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
-use EdwinFadilah\NeoEloquent\Eloquent\SoftDeletes;
+use CheHC\NeoEloquent\Tests\TestCase;
+use CheHC\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Eloquent\SoftDeletes;
 
 class ModelEventsTest extends TestCase {
 
@@ -120,11 +120,11 @@ class User extends Model {
 
     public function cakes()
     {
-        return $this->hasMany('EdwinFadilah\NeoEloquent\Tests\Functional\Events\Cake', 'HAS_CAKE');
+        return $this->hasMany('CheHC\NeoEloquent\Tests\Functional\Events\Cake', 'HAS_CAKE');
     }
     public function singleCake()
     {
-        return $this->hasOne('EdwinFadilah\NeoEloquent\Tests\Functional\Events\Cake', 'HAS_SINGLE_CAKE');
+        return $this->hasOne('CheHC\NeoEloquent\Tests\Functional\Events\Cake', 'HAS_SINGLE_CAKE');
     }
 
 

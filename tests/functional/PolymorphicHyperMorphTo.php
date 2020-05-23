@@ -1,11 +1,11 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Tests\Functional\Relations\HyperMorphTo;
+namespace CheHC\NeoEloquent\Tests\Functional\Relations\HyperMorphTo;
 
 
 use Mockery as M;
-use EdwinFadilah\NeoEloquent\Tests\TestCase;
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Tests\TestCase;
+use CheHC\NeoEloquent\Eloquent\Model;
 
 class PolymorphicHyperMorphToTest extends TestCase {
 
@@ -43,15 +43,15 @@ class PolymorphicHyperMorphToTest extends TestCase {
 
         // Comment on post and video
         $postComment = $postCommentor->comments($post)->create(['text' => 'Please soooooon!']);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\HyperEdge', $postComment);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $postComment->left());
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $postComment->right());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\HyperEdge', $postComment);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $postComment->left());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $postComment->right());
         $this->assertTrue($postComment->exists());
 
         $videoComment = $videoCommentor->comments($video)->create(['text' => 'Haha, hilarious shit!']);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\HyperEdge', $videoComment);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $videoComment->left());
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $videoComment->right());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\HyperEdge', $videoComment);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $videoComment->left());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $videoComment->right());
         $this->assertTrue($videoComment->exists());
 
         $this->assertNotEquals($postComment, $videoComment);
@@ -74,15 +74,15 @@ class PolymorphicHyperMorphToTest extends TestCase {
         $commentOnVideo = new Comment(['title' => 'When We Meet', 'url' => 'http://some.url']);
         // Comment on post and video
         $postComment = $postCommentor->comments($post)->save($commentOnPost);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\HyperEdge', $postComment);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $postComment->left());
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $postComment->right());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\HyperEdge', $postComment);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $postComment->left());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $postComment->right());
         $this->assertTrue($postComment->exists());
 
         $videoComment = $videoCommentor->comments($video)->save($commentOnVideo);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\HyperEdge', $videoComment);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $videoComment->left());
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $videoComment->right());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\HyperEdge', $videoComment);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $videoComment->left());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $videoComment->right());
         $this->assertTrue($videoComment->exists());
 
         $this->assertNotEquals($postComment, $videoComment);
@@ -105,15 +105,15 @@ class PolymorphicHyperMorphToTest extends TestCase {
         $commentOnVideo = Comment::create(['text' => 'When We Meet']);
         // Comment on post and video
         $postComment = $postCommentor->comments($post)->attach($commentOnPost->id);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\HyperEdge', $postComment);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $postComment->left());
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $postComment->right());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\HyperEdge', $postComment);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $postComment->left());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $postComment->right());
         $this->assertTrue($postComment->exists());
 
         $videoComment = $videoCommentor->comments($video)->attach($commentOnVideo->id);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\HyperEdge', $videoComment);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $videoComment->left());
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $videoComment->right());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\HyperEdge', $videoComment);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $videoComment->left());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $videoComment->right());
         $this->assertTrue($videoComment->exists());
 
         $this->assertNotEquals($postComment, $videoComment);
@@ -141,18 +141,18 @@ class PolymorphicHyperMorphToTest extends TestCase {
         $postComments = $postCommentor->comments($post)->attach([$commentOnPost->id, $anotherCommentOnPost->id]);
         foreach ($postComments as $comment)
         {
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\HyperEdge', $comment);
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $comment->left());
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $comment->right());
+            $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\HyperEdge', $comment);
+            $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $comment->left());
+            $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $comment->right());
             $this->assertTrue($comment->exists());
         }
 
         $videoComments = $videoCommentor->comments($video)->attach([$commentOnVideo->id, $anotherCommentOnVideo->id]);
         foreach ($videoComments as $comment)
         {
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\HyperEdge', $comment);
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $comment->left());
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $comment->right());
+            $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\HyperEdge', $comment);
+            $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $comment->left());
+            $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $comment->right());
             $this->assertTrue($comment->exists());
         }
 
@@ -176,15 +176,15 @@ class PolymorphicHyperMorphToTest extends TestCase {
         $commentOnVideo = Comment::create(['text' => 'Balalaika Sings']);
 
         $postComment = $postCommentor->comments($post)->attach($commentOnPost);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\HyperEdge', $postComment);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $postComment->left());
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $postComment->right());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\HyperEdge', $postComment);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $postComment->left());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $postComment->right());
         $this->assertTrue($postComment->exists());
 
         $videoComment = $videoCommentor->comments($video)->attach($commentOnVideo);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\HyperEdge', $videoComment);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $videoComment->left());
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $videoComment->right());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\HyperEdge', $videoComment);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $videoComment->left());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $videoComment->right());
         $this->assertTrue($videoComment->exists());
 
         $this->assertNotEquals($postComment, $videoComment);
@@ -212,18 +212,18 @@ class PolymorphicHyperMorphToTest extends TestCase {
         $postComments = $postCommentor->comments($post)->attach([$commentOnPost, $anotherCommentOnPost]);
         foreach ($postComments as $comment)
         {
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\HyperEdge', $comment);
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $comment->left());
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $comment->right());
+            $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\HyperEdge', $comment);
+            $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $comment->left());
+            $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $comment->right());
             $this->assertTrue($comment->exists());
         }
 
         $videoComments = $videoCommentor->comments($video)->attach([$commentOnVideo, $anotherCommentOnVideo]);
         foreach ($videoComments as $comment)
         {
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\HyperEdge', $comment);
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $comment->left());
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $comment->right());
+            $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\HyperEdge', $comment);
+            $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $comment->left());
+            $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $comment->right());
             $this->assertTrue($comment->exists());
         }
 
@@ -259,15 +259,15 @@ class PolymorphicHyperMorphToTest extends TestCase {
         $commentOnVideo = Comment::create(['text' => 'Balalaika Sings']);
 
         $postComment = $postCommentor->comments($post)->attach($commentOnPost);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\HyperEdge', $postComment);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $postComment->left());
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $postComment->right());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\HyperEdge', $postComment);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $postComment->left());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $postComment->right());
         $this->assertTrue($postComment->exists());
 
         $videoComment = $videoCommentor->comments($video)->attach($commentOnVideo);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\HyperEdge', $videoComment);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $videoComment->left());
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $videoComment->right());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\HyperEdge', $videoComment);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $videoComment->left());
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $videoComment->right());
         $this->assertTrue($videoComment->exists());
 
         $this->assertNotEquals($postComment, $videoComment);
@@ -400,7 +400,7 @@ class PolymorphicHyperMorphToTest extends TestCase {
         $post = Post::find($post->id);
         foreach ($post->comments as $comment)
         {
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Comment', $comment);
+            $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Comment', $comment);
             $this->assertTrue($comment->exists);
             $this->assertGreaterThanOrEqual(0, $comment->id);
             $this->assertEquals($commentOnPost->toArray(), $comment->toArray());
@@ -409,7 +409,7 @@ class PolymorphicHyperMorphToTest extends TestCase {
         $video = Video::find($video->id);
         foreach ($video->comments as $comment)
         {
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Comment', $comment);
+            $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Comment', $comment);
             $this->assertTrue($comment->exists);
             $this->assertGreaterThanOrEqual(0, $comment->id);
             $this->assertEquals($commentOnVideo->toArray(), $comment->toArray());
@@ -437,7 +437,7 @@ class PolymorphicHyperMorphToTest extends TestCase {
         $this->assertCount(1, $postRelations['comments']);
         foreach ($postRelations['comments'] as $comment)
         {
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Comment', $comment);
+            $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Comment', $comment);
             $this->assertTrue($comment->exists);
             $this->assertGreaterThanOrEqual(0, $comment->id);
             $this->assertEquals($commentOnPost->toArray(), $comment->toArray());
@@ -452,7 +452,7 @@ class PolymorphicHyperMorphToTest extends TestCase {
         $this->assertCount(1, $videoRelations['comments']);
         foreach ($videoRelations['comments'] as $comment)
         {
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Comment', $comment);
+            $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Comment', $comment);
             $this->assertTrue($comment->exists);
             $this->assertGreaterThanOrEqual(0, $comment->id);
             $this->assertEquals($commentOnVideo->toArray(), $comment->toArray());
@@ -596,7 +596,7 @@ class PolymorphicHyperMorphToTest extends TestCase {
 
         $commentablePost = $commentOnPost->commentable;
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Post', $commentablePost);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Post', $commentablePost);
         $this->assertEquals($post->toArray(), $commentablePost->toArray());
 
         // Check the video of this comment
@@ -604,7 +604,7 @@ class PolymorphicHyperMorphToTest extends TestCase {
         $videoComment = $videoCommentor->comments($video)->attach($commentOnVideo);
 
         $commentableVideo = $commentOnVideo->commentable;
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Video', $commentableVideo);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Video', $commentableVideo);
         $this->assertEquals($video->toArray(), $commentableVideo->toArray());
     }
 
@@ -628,7 +628,7 @@ class PolymorphicHyperMorphToTest extends TestCase {
         $morphedCommentRelations = $morphedPostComment->getRelations();
 
         $this->assertArrayHasKey('commentable', $morphedCommentRelations);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Post', $morphedCommentRelations['commentable']);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Post', $morphedCommentRelations['commentable']);
         $this->assertEquals($post->toArray(), $morphedCommentRelations['commentable']->toArray());
 
         // // Check the video of this comment
@@ -639,7 +639,7 @@ class PolymorphicHyperMorphToTest extends TestCase {
         $morphedVideoCommentRelations = $morphedVideoComment->getRelations();
 
         $this->assertArrayHasKey('commentable', $morphedVideoCommentRelations);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Video', $morphedVideoCommentRelations['commentable']);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Video', $morphedVideoCommentRelations['commentable']);
         $this->assertEquals($video->toArray(), $morphedVideoCommentRelations['commentable']->toArray());
     }
 
@@ -653,17 +653,17 @@ class User extends Model {
 
     public function comments($model = null)
     {
-        return $this->hyperMorph($model, 'EdwinFadilah\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Comment', 'COMMENTED', 'ON');
+        return $this->hyperMorph($model, 'CheHC\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Comment', 'COMMENTED', 'ON');
     }
 
     public function posts()
     {
-        return $this->hasMany('EdwinFadilah\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Post', 'POSTED');
+        return $this->hasMany('CheHC\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Post', 'POSTED');
     }
 
     public function videos()
     {
-        return $this->hasMany('EdwinFadilah\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Video', 'UPLOADED');
+        return $this->hasMany('CheHC\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Video', 'UPLOADED');
     }
 }
 
@@ -675,7 +675,7 @@ class Post extends Model {
 
     public function comments()
     {
-        return $this->morphMany('EdwinFadilah\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Comment', 'ON');
+        return $this->morphMany('CheHC\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Comment', 'ON');
     }
 }
 
@@ -687,7 +687,7 @@ class Video extends Model {
 
     public function comments()
     {
-        return $this->morphMany('EdwinFadilah\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Comment', 'ON');
+        return $this->morphMany('CheHC\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Comment', 'ON');
     }
 }
 
@@ -704,12 +704,12 @@ class Comment extends Model {
 
     public function post()
     {
-        return $this->morphTo('EdwinFadilah\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Post', 'ON');
+        return $this->morphTo('CheHC\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Post', 'ON');
     }
 
     public function video()
     {
-        return $this->morphTo('EdwinFadilah\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Video', 'ON');
+        return $this->morphTo('CheHC\NeoEloquent\Tests\Functional\Relations\HyperMorphTo\Video', 'ON');
     }
 }
 

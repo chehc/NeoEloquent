@@ -1,9 +1,9 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Eloquent\Relations;
+namespace CheHC\NeoEloquent\Eloquent\Relations;
 
 
-use EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut;
+use CheHC\NeoEloquent\Eloquent\Edges\EdgeOut;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 
 class MorphMany extends BelongsToMany {
@@ -92,7 +92,7 @@ class MorphMany extends BelongsToMany {
      *
      * @param  \Illuminate\Database\Eloquent\Model $model
      * @param  array         $attributes
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Edges\Edge[In|Out]
+     * @return \CheHC\NeoEloquent\Eloquent\Edges\Edge[In|Out]
      */
     public function getEdge(EloquentModel $model = null, $attributes = array())
     {

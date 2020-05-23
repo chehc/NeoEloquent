@@ -1,6 +1,6 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Schema;
+namespace CheHC\NeoEloquent\Schema;
 
 
 use Closure;
@@ -58,7 +58,7 @@ you can do so by passing additional arguments to default migration command like:
      *
      * @param  string   $label
      * @param  Closure  $callback
-     * @return \EdwinFadilah\NeoEloquent\Schema\Blueprint
+     * @return \CheHC\NeoEloquent\Schema\Blueprint
      */
     public function label($label, Closure $callback)
     {
@@ -71,7 +71,7 @@ you can do so by passing additional arguments to default migration command like:
      * Drop a label from the schema.
      *
      * @param  string  $label
-     * @return \EdwinFadilah\NeoEloquent\Schema\Blueprint
+     * @return \CheHC\NeoEloquent\Schema\Blueprint
      */
     public function drop($label)
     {
@@ -86,7 +86,7 @@ you can do so by passing additional arguments to default migration command like:
      * Drop a label from the schema if it exists.
      *
      * @param  string  $label
-     * @return \EdwinFadilah\NeoEloquent\Schema\Blueprint
+     * @return \CheHC\NeoEloquent\Schema\Blueprint
      */
     public function dropIfExists($label)
     {
@@ -128,7 +128,7 @@ you can do so by passing additional arguments to default migration command like:
      *
      * @param  string  $from
      * @param  string  $to
-     * @return \EdwinFadilah\NeoEloquent\Schema\Blueprint|boolean
+     * @return \CheHC\NeoEloquent\Schema\Blueprint|boolean
      */
     public function renameLabel($from, $to)
     {
@@ -159,7 +159,7 @@ you can do so by passing additional arguments to default migration command like:
      *
      * @param  string   $label
      * @param  Closure  $callback
-     * @return \EdwinFadilah\NeoEloquent\Schema\Blueprint
+     * @return \CheHC\NeoEloquent\Schema\Blueprint
      */
     protected function createBlueprint($label, Closure $callback = null)
     {
@@ -177,7 +177,7 @@ you can do so by passing additional arguments to default migration command like:
      * Set the database connection instance.
      *
      * @param  \Illuminate\Database\ConnectionResolverInterface
-     * @return \EdwinFadilah\NeoEloquent\Schema\Builder
+     * @return \CheHC\NeoEloquent\Schema\Builder
      */
     public function setConnection(ConnectionInterface $connection)
     {

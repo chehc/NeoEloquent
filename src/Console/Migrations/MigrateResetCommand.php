@@ -1,6 +1,6 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Console\Migrations;
+namespace CheHC\NeoEloquent\Console\Migrations;
 
 
 use Illuminate\Console\ConfirmableTrait;

@@ -1,6 +1,6 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Exceptions;
+namespace CheHC\NeoEloquent\Exceptions;
 
 
 use RuntimeException;

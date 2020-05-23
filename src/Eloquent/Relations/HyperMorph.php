@@ -1,11 +1,11 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Eloquent\Relations;
+namespace CheHC\NeoEloquent\Eloquent\Relations;
 
 
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
-use EdwinFadilah\NeoEloquent\Eloquent\Builder;
-use EdwinFadilah\NeoEloquent\Eloquent\Edges\HyperEdge;
+use CheHC\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Eloquent\Builder;
+use CheHC\NeoEloquent\Eloquent\Edges\HyperEdge;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 
 class HyperMorph extends BelongsToMany {
@@ -14,7 +14,7 @@ class HyperMorph extends BelongsToMany {
      * The morph Model instance
      * representing the 3rd Node of the relationship.
      *
-     * @var \EdwinFadilah\NeoEloquent\Eloquent\Model
+     * @var \CheHC\NeoEloquent\Eloquent\Model
      */
     protected $morph;
 
@@ -36,9 +36,9 @@ class HyperMorph extends BelongsToMany {
     /**
      * Create a new HyperMorph relationship.
      *
-     * @param \EdwinFadilah\NeoEloquent\Eloquent\Builder $query
-     * @param EdwinFadilah\NeoEloquent\Eloquent\Model   $parent
-     * @param EdwinFadilah\NeoEloquent\Eloquent\Model   $morph
+     * @param \CheHC\NeoEloquent\Eloquent\Builder $query
+     * @param CheHC\NeoEloquent\Eloquent\Model   $parent
+     * @param CheHC\NeoEloquent\Eloquent\Model   $morph
      * @param string  $type
      * @param string  $morphType
      * @param string  $key

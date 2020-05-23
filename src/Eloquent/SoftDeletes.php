@@ -1,6 +1,6 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Eloquent;
+namespace CheHC\NeoEloquent\Eloquent;
 
 
 use Illuminate\Database\Eloquent\SoftDeletes as IlluminateSoftDeletes;

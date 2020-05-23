@@ -1,13 +1,13 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Tests\Eloquent\Relations;
+namespace CheHC\NeoEloquent\Tests\Eloquent\Relations;
 
 
 use Mockery as M;
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
-use EdwinFadilah\NeoEloquent\Tests\TestCase;
+use CheHC\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Tests\TestCase;
 use Illuminate\Database\Eloquent\Collection;
-use EdwinFadilah\NeoEloquent\Eloquent\Relations\BelongsTo;
+use CheHC\NeoEloquent\Eloquent\Relations\BelongsTo;
 
 class BelongsToTest extends TestCase  {
 
@@ -30,13 +30,13 @@ class BelongsToTest extends TestCase  {
     public function testRelationInitializationAddsConstraints()
     {
         $relation = $this->getRelation();
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Relations\BelongsTo', $relation);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Relations\BelongsTo', $relation);
     }
 
     public function testUpdateMethodRetrievesModelAndUpdates()
     {
         $relation = $this->getRelation();
-        $mock = M::mock('EdwinFadilah\NeoEloquent\Eloquent\Model');
+        $mock = M::mock('CheHC\NeoEloquent\Eloquent\Model');
         $mock->shouldReceive('fill')->once()->with(array('attributes'))->andReturn($mock);
         $mock->shouldReceive('save')->once()->andReturn(true);
         $relation->getQuery()->shouldReceive('first')->once()->andReturn($mock);
@@ -49,13 +49,13 @@ class BelongsToTest extends TestCase  {
         $models = [new Stub(['id' => 1]), new Stub(['id' => 2]), new Stub(['id' => 3])];
         $relation = $this->getEagerRelation($models);
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Relations\BelongsTo', $relation);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Relations\BelongsTo', $relation);
     }
 
     public function testRelationIsProperlyInitialized()
     {
         $relation = $this->getRelation();
-        $model = M::mock('EdwinFadilah\NeoEloquent\Eloquent\Model');
+        $model = M::mock('CheHC\NeoEloquent\Eloquent\Model');
         $model->shouldReceive('setRelation')->once()->with('foo', null);
         $models = $relation->initRelation(array($model), 'foo');
 
@@ -89,15 +89,15 @@ class BelongsToTest extends TestCase  {
     protected function getEagerRelation($models)
     {
 
-        $query = M::mock('EdwinFadilah\NeoEloquent\Query\Builder');
+        $query = M::mock('CheHC\NeoEloquent\Query\Builder');
         $query ->shouldReceive('modelAsNode')->with(array('Stub'))->andReturn('parent');
 
-        $builder = M::mock('EdwinFadilah\NeoEloquent\Eloquent\Builder');
+        $builder = M::mock('CheHC\NeoEloquent\Eloquent\Builder');
         $builder->shouldReceive('getQuery')->times(4)->andReturn($query);
         $builder->shouldReceive('select')->once()->with('relation');
         $builder->shouldReceive('select')->once()->with('relation', 'parent');
 
-        $related = M::mock('EdwinFadilah\NeoEloquent\Eloquent\Model')->makePartial();
+        $related = M::mock('CheHC\NeoEloquent\Eloquent\Model')->makePartial();
         $related->shouldReceive('getKeyName')->andReturn('id');
         $related->shouldReceive('getTable')->andReturn('relation');
 
@@ -125,14 +125,14 @@ class BelongsToTest extends TestCase  {
 
     protected function getRelation($parent = null)
     {
-        $query = M::mock('EdwinFadilah\NeoEloquent\Query\Builder');
+        $query = M::mock('CheHC\NeoEloquent\Query\Builder');
         $query ->shouldReceive('modelAsNode')->with(array('Stub'))->andReturn('parent');
 
-        $builder = M::mock('EdwinFadilah\NeoEloquent\Eloquent\Builder');
+        $builder = M::mock('CheHC\NeoEloquent\Eloquent\Builder');
         $builder->shouldReceive('getQuery')->twice()->andReturn($query);
         $builder->shouldReceive('select')->once()->with('relation');
 
-        $related = M::mock('EdwinFadilah\NeoEloquent\Eloquent\Model')->makePartial();
+        $related = M::mock('CheHC\NeoEloquent\Eloquent\Model')->makePartial();
         $related->shouldReceive('getKeyName')->andReturn('id');
         $related->shouldReceive('getTable')->andReturn('relation');
 

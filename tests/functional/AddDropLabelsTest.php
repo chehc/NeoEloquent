@@ -1,12 +1,12 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Tests\Functional\AddDropLabels;
+namespace CheHC\NeoEloquent\Tests\Functional\AddDropLabels;
 
 
 use Mockery as M;
-use EdwinFadilah\NeoEloquent\Tests\TestCase;
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
-use EdwinFadilah\NeoEloquent\Eloquent\SoftDeletingTrait;
+use CheHC\NeoEloquent\Tests\TestCase;
+use CheHC\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Eloquent\SoftDeletingTrait;
 
 class Labelwiz extends Model {
 
@@ -25,7 +25,7 @@ class Foo extends Model {
     protected $fillable = ['prop'];
     public function bar()
     {
-    return $this->hasOne('EdwinFadilah\NeoEloquent\Tests\Functional\AddDropLabels\Bar', 'OWNS');
+    return $this->hasOne('CheHC\NeoEloquent\Tests\Functional\AddDropLabels\Bar', 'OWNS');
     }
 }
 

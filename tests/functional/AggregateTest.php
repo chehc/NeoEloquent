@@ -1,13 +1,13 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Tests\Functional\Aggregate;
+namespace CheHC\NeoEloquent\Tests\Functional\Aggregate;
 
 
 use Illuminate\Database\Query\Processors\Processor;
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
-use EdwinFadilah\NeoEloquent\Query\Builder;
-use EdwinFadilah\NeoEloquent\Query\Grammars\CypherGrammar;
-use EdwinFadilah\NeoEloquent\Tests\TestCase;
+use CheHC\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Query\Builder;
+use CheHC\NeoEloquent\Query\Grammars\CypherGrammar;
+use CheHC\NeoEloquent\Tests\TestCase;
 
 
 class AggregateTest extends TestCase {

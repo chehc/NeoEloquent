@@ -1,11 +1,11 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Eloquent\Edges;
+namespace CheHC\NeoEloquent\Eloquent\Edges;
 
 
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
-use EdwinFadilah\NeoEloquent\Eloquent\Builder;
-use EdwinFadilah\NeoEloquent\Eloquent\Edges\Relation;
+use CheHC\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Eloquent\Builder;
+use CheHC\NeoEloquent\Eloquent\Edges\Relation;
 
 class HyperEdge extends Relation {
 
@@ -15,7 +15,7 @@ class HyperEdge extends Relation {
      * The morph Model instance
      * representing the 3rd Node of the relationship.
      *
-     * @var \EdwinFadilah\NeoEloquent\Eloquent\Model
+     * @var \CheHC\NeoEloquent\Eloquent\Model
      */
     protected $morph;
 
@@ -30,14 +30,14 @@ class HyperEdge extends Relation {
     /**
      * The left side Edge of the relationship.
      *
-     * @var \EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut
+     * @var \CheHC\NeoEloquent\Eloquent\Edges\EdgeOut
      */
     protected $left;
 
     /**
      * The right side Edge of the relationship.
      *
-     * @var \EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut
+     * @var \CheHC\NeoEloquent\Eloquent\Edges\EdgeOut
      */
     protected $right;
 
@@ -51,12 +51,12 @@ class HyperEdge extends Relation {
     /**
      * Create a new HyperEdge instance.
      *
-     * @param EdwinFadilah\NeoEloquent\Eloquent\Builder $query
-     * @param EdwinFadilah\NeoEloquent\Eloquent\Model   $parent
+     * @param CheHC\NeoEloquent\Eloquent\Builder $query
+     * @param CheHC\NeoEloquent\Eloquent\Model   $parent
      * @param string  $type
-     * @param EdwinFadilah\NeoEloquent\Eloquent\Model   $related
+     * @param CheHC\NeoEloquent\Eloquent\Model   $related
      * @param string  $morphType
-     * @param EdwinFadilah\NeoEloquent\Eloquent\Model   $morph
+     * @param CheHC\NeoEloquent\Eloquent\Model   $morph
      */
     public function __construct(Builder $query, Model $parent, $type, Model $related, $morphType, Model $morph, $attributes = array())
     {
@@ -74,7 +74,7 @@ class HyperEdge extends Relation {
      *
      * @return void
      *
-     * @throws  \EdwinFadilah\NeoEloquent\NoEdgeDirectionException If $direction is not set on the inheriting relation.
+     * @throws  \CheHC\NeoEloquent\NoEdgeDirectionException If $direction is not set on the inheriting relation.
      */
     public function initRelation()
     {
@@ -96,7 +96,7 @@ class HyperEdge extends Relation {
     /**
      * Get the left side Edge of this relationship.
      *
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut
+     * @return \CheHC\NeoEloquent\Eloquent\Edges\EdgeOut
      */
     public function left()
     {
@@ -106,7 +106,7 @@ class HyperEdge extends Relation {
     /**
      * Set the left side Edge of this relation.
      *
-     * @param \EdwinFadilah\NeoEloquent\Eloquent\Edges\Relation $left
+     * @param \CheHC\NeoEloquent\Eloquent\Edges\Relation $left
      * @return  void
      */
     public function setLeft($left)
@@ -117,7 +117,7 @@ class HyperEdge extends Relation {
     /**
      * Get the right side Edge of this relationship.
      *
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut
+     * @return \CheHC\NeoEloquent\Eloquent\Edges\EdgeOut
      */
     public function right()
     {
@@ -127,7 +127,7 @@ class HyperEdge extends Relation {
     /**
      * Set the right side Edge of this relationship.
      *
-     * @param \EdwinFadilah\NeoEloquent\Eloquent\Edges\Relation $right
+     * @param \CheHC\NeoEloquent\Eloquent\Edges\Relation $right
      * @return void
      */
     public function setRight($right)
@@ -138,7 +138,7 @@ class HyperEdge extends Relation {
     /**
      * Get the hyper model of the relationship.
      *
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Model
+     * @return \CheHC\NeoEloquent\Eloquent\Model
      */
     public function hyper()
     {

@@ -1,10 +1,10 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Console\Migrations;
+namespace CheHC\NeoEloquent\Console\Migrations;
 
 
 use Illuminate\Support\Composer;
-use EdwinFadilah\NeoEloquent\Migrations\MigrationCreator;
+use CheHC\NeoEloquent\Migrations\MigrationCreator;
 
 class MigrateMakeCommand extends BaseCommand
 {
@@ -36,7 +36,7 @@ class MigrateMakeCommand extends BaseCommand
     protected $composer;
 
     /**
-     * @param  \EdwinFadilah\NeoEloquent\Migrations\MigrationCreator  $creator
+     * @param  \CheHC\NeoEloquent\Migrations\MigrationCreator  $creator
      * @param  \Illuminate\Support\Composer  $composer
      * @return void
      */

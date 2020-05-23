@@ -1,10 +1,10 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Schema\Grammars;
+namespace CheHC\NeoEloquent\Schema\Grammars;
 
 
 use Illuminate\Support\Fluent;
-use EdwinFadilah\NeoEloquent\Schema\Blueprint;
+use CheHC\NeoEloquent\Schema\Blueprint;
 
 class CypherGrammar extends Grammar
 {

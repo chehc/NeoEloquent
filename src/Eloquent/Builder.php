@@ -1,19 +1,19 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Eloquent;
+namespace CheHC\NeoEloquent\Eloquent;
 
 
 use Closure;
 use Everyman\Neo4j\Node;
 use Everyman\Neo4j\Query\Row;
-use EdwinFadilah\NeoEloquent\Helpers;
+use CheHC\NeoEloquent\Helpers;
 use Everyman\Neo4j\Query\ResultSet;
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
-use EdwinFadilah\NeoEloquent\QueryException;
-use EdwinFadilah\NeoEloquent\Eloquent\Relations\HasOne;
-use EdwinFadilah\NeoEloquent\Eloquent\Relations\HasMany;
+use CheHC\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\QueryException;
+use CheHC\NeoEloquent\Eloquent\Relations\HasOne;
+use CheHC\NeoEloquent\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Collection;
-use EdwinFadilah\NeoEloquent\Eloquent\Relations\OneRelation;
+use CheHC\NeoEloquent\Eloquent\Relations\OneRelation;
 use Illuminate\Database\Eloquent\Builder as IlluminateBuilder;
 use Illuminate\Pagination\Paginator;
 
@@ -65,7 +65,7 @@ class Builder extends IlluminateBuilder {
      *
      * @param  array  $parts Should be associative of the form ['value' => 'identifier']
      *                       and will be mapped to 'WITH value as identifier'
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Builder|static
+     * @return \CheHC\NeoEloquent\Eloquent\Builder|static
      */
     public function carry(array $parts)
     {
@@ -415,10 +415,10 @@ class Builder extends IlluminateBuilder {
     /**
      * Add an INCOMING "<-" relationship MATCH to the query.
      *
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Model $parent       The parent model
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Model $related      The related model
+     * @param  \CheHC\NeoEloquent\Eloquent\Model $parent       The parent model
+     * @param  \CheHC\NeoEloquent\Eloquent\Model $related      The related model
      * @param  string                             $relationship
-     * @return \EdwinFadilah\NeoEloquent\Query\Builder|static
+     * @return \CheHC\NeoEloquent\Query\Builder|static
      */
     public function matchIn($parent, $related, $relatedNode, $relationship, $property, $value = null)
     {
@@ -431,10 +431,10 @@ class Builder extends IlluminateBuilder {
     /**
      * Add an OUTGOING "->" relationship MATCH to the query.
      *
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Model $parent       The parent model
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Model $related      The related model
+     * @param  \CheHC\NeoEloquent\Eloquent\Model $parent       The parent model
+     * @param  \CheHC\NeoEloquent\Eloquent\Model $related      The related model
      * @param  string                             $relationship
-     * @return \EdwinFadilah\NeoEloquent\Eloquent|static
+     * @return \CheHC\NeoEloquent\Eloquent|static
      */
     public function matchOut($parent, $related, $relatedNode, $relationship, $property, $value = null)
     {
@@ -448,11 +448,11 @@ class Builder extends IlluminateBuilder {
      * a morph relationship usually ignores the end node type since it doesn't know
      * what it would be so we'll only set the start node and hope to get it right when we match it.
      *
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Model $parent
+     * @param  \CheHC\NeoEloquent\Eloquent\Model $parent
      * @param  string $relatedNode
      * @param  string $property
      * @param  mixed $value
-     * @return \EdwinFadilah\NeoEloquent\Eloquent|static
+     * @return \CheHC\NeoEloquent\Eloquent|static
      */
     public function matchMorphOut($parent, $relatedNode, $property, $value = null)
     {
@@ -490,7 +490,7 @@ class Builder extends IlluminateBuilder {
      * Add a mutation to the query.
      *
      * @param string $holder
-     * @param \EdwinFadilah\NeoEloquent\Eloquent\Model|string  $model String in the case of morphs where we do not know
+     * @param \CheHC\NeoEloquent\Eloquent\Model|string  $model String in the case of morphs where we do not know
      *                                                           the morph model class name
      * @return  void
      */
@@ -506,7 +506,7 @@ class Builder extends IlluminateBuilder {
      * Add a mutation of the type 'many' to the query.
      *
      * @param string $holder
-     * @param \EdwinFadilah\NeoEloquent\Eloquent\Model  $model
+     * @param \CheHC\NeoEloquent\Eloquent\Model  $model
      */
     public function addManyMutation($holder, Model $model)
     {
@@ -566,7 +566,7 @@ class Builder extends IlluminateBuilder {
      * Get the mutation model.
      *
      * @param  string $mutation
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Model
+     * @return \CheHC\NeoEloquent\Eloquent\Model
      */
     public function getMutationModel($mutation)
     {
@@ -649,7 +649,7 @@ class Builder extends IlluminateBuilder {
      *
      * @param  array  $attributes
      * @param  array  $relations
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Model
+     * @return \CheHC\NeoEloquent\Eloquent\Model
      */
     public function createWith(array $attributes, array $relations)
     {
@@ -775,7 +775,7 @@ class Builder extends IlluminateBuilder {
     /**
      * Prefix query bindings and wheres with the relation's model Node placeholder.
      *
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Builder $query
+     * @param  \CheHC\NeoEloquent\Eloquent\Builder $query
      * @param  string  $prefix
      * @return void
      */
@@ -787,7 +787,7 @@ class Builder extends IlluminateBuilder {
 
     /**
      * Prefix where clauses' columns.
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Builder $query
+     * @param  \CheHC\NeoEloquent\Eloquent\Builder $query
      * @param  string  $prefix
      * @return void
      */
@@ -818,7 +818,7 @@ class Builder extends IlluminateBuilder {
     /**
      * Get the match[In|Out] method name out of a relation.
      *
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Relations\* $relation
+     * @param  \CheHC\NeoEloquent\Eloquent\Relations\* $relation
      * @return [type]
      */
     protected function getMatchMethodName($relation)

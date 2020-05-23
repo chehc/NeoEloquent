@@ -1,11 +1,11 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Tests\Eloquent;
+namespace CheHC\NeoEloquent\Tests\Eloquent;
 
 
 use Mockery as M;
-use EdwinFadilah\NeoEloquent\Eloquent\Model as NeoEloquent;
-use EdwinFadilah\NeoEloquent\Tests\TestCase;
+use CheHC\NeoEloquent\Eloquent\Model as NeoEloquent;
+use CheHC\NeoEloquent\Tests\TestCase;
 
 class Model extends NeoEloquent {
 
@@ -37,7 +37,7 @@ class ModelTest extends TestCase {
         $label = $m->getDefaultNodeLabel();
 
         // By default the label should be the concatenation of the class's namespace
-        $this->assertEquals('EdwinFadilahNeoEloquentTestsEloquentModel', reset($label));
+        $this->assertEquals('CheHCNeoEloquentTestsEloquentModel', reset($label));
     }
 
     public function testOverriddenNodeLabel()
@@ -90,9 +90,9 @@ class ModelTest extends TestCase {
     {
         $m = new Model;
 
-        $builder = $m->newEloquentBuilder(M::mock('EdwinFadilah\NeoEloquent\Query\Builder'));
+        $builder = $m->newEloquentBuilder(M::mock('CheHC\NeoEloquent\Query\Builder'));
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Builder', $builder);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Builder', $builder);
     }
 
     public function testAddLabels()

@@ -1,6 +1,6 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Schema;
+namespace CheHC\NeoEloquent\Schema;
 
 
 use Closure;

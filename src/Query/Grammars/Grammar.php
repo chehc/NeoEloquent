@@ -1,6 +1,6 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Query\Grammars;
+namespace CheHC\NeoEloquent\Query\Grammars;
 
 
 use DateTime;
@@ -12,7 +12,7 @@ class Grammar extends IlluminateGrammar {
     /**
      * The Query builder instance.
      *
-     * @var EdwinFadilah\NeoEloquent\Query\Builder
+     * @var CheHC\NeoEloquent\Query\Builder
      */
     protected $query;
 
@@ -193,12 +193,12 @@ class Grammar extends IlluminateGrammar {
 
         // When this is a related node we'll just prepend it with 'with_' that way we avoid
         // clashing node models in the cases like using recursive model relations.
-        // @see https://github.com/EdwinFadilah/NeoEloquent/issues/7
+        // @see https://github.com/CheHC/NeoEloquent/issues/7
         if ( ! is_null($relation)) $labels = 'with_'. $relation .'_'. $labels;
 
         // patch to fix bug 49.  this downcases only first letter of label which is
         // compatible with how labels are recased in the rest of the library
-        // @see https://github.com/EdwinFadilah/NeoEloquent/issues/49
+        // @see https://github.com/CheHC/NeoEloquent/issues/49
         if (is_array($labels)) {
             foreach ($labels as $label) {
                 $firstChar = substr($label, 0, 1);
@@ -216,7 +216,7 @@ class Grammar extends IlluminateGrammar {
     /**
      * Set the query builder for this grammar instance.
      *
-     * @param \EdwinFadilah\NeoEloquent\Query\Builder $query
+     * @param \CheHC\NeoEloquent\Query\Builder $query
      */
     public function setQuery($query)
     {

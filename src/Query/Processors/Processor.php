@@ -1,6 +1,6 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Query\Processors;
+namespace CheHC\NeoEloquent\Query\Processors;
 
 
 use \Illuminate\Database\Query\Processors\Processor as IlluminateProcessor;

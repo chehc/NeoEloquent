@@ -1,8 +1,8 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Migrations;
+namespace CheHC\NeoEloquent\Migrations;
 
-use EdwinFadilah\NeoEloquent\Eloquent\Model as NeoEloquent;
+use CheHC\NeoEloquent\Eloquent\Model as NeoEloquent;
 
 class MigrationModel extends NeoEloquent {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Schema\Grammars;
+namespace CheHC\NeoEloquent\Schema\Grammars;
 
 
 use Illuminate\Database\Schema\Grammars\Grammar as IlluminateSchemaGrammar;

@@ -1,19 +1,19 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent;
+namespace CheHC\NeoEloquent;
 
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Migrations\Migrator;
-use EdwinFadilah\NeoEloquent\Console\Migrations\MigrateStatusCommand;
-use EdwinFadilah\NeoEloquent\Migrations\MigrationModel;
-use EdwinFadilah\NeoEloquent\Migrations\MigrationCreator;
-use EdwinFadilah\NeoEloquent\Console\Migrations\MigrateCommand;
-use EdwinFadilah\NeoEloquent\Console\Migrations\MigrateMakeCommand;
-use EdwinFadilah\NeoEloquent\Console\Migrations\MigrateResetCommand;
-use EdwinFadilah\NeoEloquent\Migrations\DatabaseMigrationRepository;
-use EdwinFadilah\NeoEloquent\Console\Migrations\MigrateRefreshCommand;
-use EdwinFadilah\NeoEloquent\Console\Migrations\MigrateRollbackCommand;
+use CheHC\NeoEloquent\Console\Migrations\MigrateStatusCommand;
+use CheHC\NeoEloquent\Migrations\MigrationModel;
+use CheHC\NeoEloquent\Migrations\MigrationCreator;
+use CheHC\NeoEloquent\Console\Migrations\MigrateCommand;
+use CheHC\NeoEloquent\Console\Migrations\MigrateMakeCommand;
+use CheHC\NeoEloquent\Console\Migrations\MigrateResetCommand;
+use CheHC\NeoEloquent\Migrations\DatabaseMigrationRepository;
+use CheHC\NeoEloquent\Console\Migrations\MigrateRefreshCommand;
+use CheHC\NeoEloquent\Console\Migrations\MigrateRollbackCommand;
 
 class MigrationServiceProvider extends ServiceProvider {
 

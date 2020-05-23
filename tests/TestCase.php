@@ -1,11 +1,11 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Tests;
+namespace CheHC\NeoEloquent\Tests;
 
 
 use Mockery as M;
-use EdwinFadilah\NeoEloquent\Connection;
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Connection;
+use CheHC\NeoEloquent\Eloquent\Model;
 use PHPUnit_Framework_TestCase as PHPUnit;
 
 class Stub extends Model {
@@ -49,7 +49,7 @@ class TestCase extends PHPUnit {
      * Get the connection with a given or the default configuration.
      *
      * @param  string $config As specified in config/database.php
-     * @return \EdwinFadilah\NeoEloquent\Connection
+     * @return \CheHC\NeoEloquent\Connection
      */
     protected function getConnectionWithConfig($config = null)
     {

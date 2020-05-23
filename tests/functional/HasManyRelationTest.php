@@ -1,11 +1,11 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Tests\Functional\Relations\HasMany;
+namespace CheHC\NeoEloquent\Tests\Functional\Relations\HasMany;
 
 
 use Mockery as M;
-use EdwinFadilah\NeoEloquent\Tests\TestCase;
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Tests\TestCase;
+use CheHC\NeoEloquent\Eloquent\Model;
 
 class Book extends Model {
 
@@ -22,7 +22,7 @@ class Author extends Model {
 
     public function books()
     {
-        return $this->hasMany('EdwinFadilah\NeoEloquent\Tests\Functional\Relations\HasMany\Book', 'WROTE');
+        return $this->hasMany('CheHC\NeoEloquent\Tests\Functional\Relations\HasMany\Book', 'WROTE');
     }
 }
 
@@ -54,14 +54,14 @@ class HasManyRelationTest extends TestCase {
         $writtenGot = $author->books()->save($got, ['ratings' => '123']);
         $writtenCok = $author->books()->save($cok, ['chapters' => 70]);
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $writtenGot);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $writtenGot);
         $this->assertTrue($writtenGot->exists());
         $this->assertGreaterThan(0, $writtenGot->id);
         $this->assertNotNull($writtenGot->created_at);
         $this->assertNotNull($writtenGot->updated_at);
         $this->assertEquals($writtenGot->ratings, 123);
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $writtenCok);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $writtenCok);
         $this->assertTrue($writtenCok->exists());
         $this->assertGreaterThan(0, $writtenCok->id);
         $this->assertNotNull($writtenCok->created_at);
@@ -113,7 +113,7 @@ class HasManyRelationTest extends TestCase {
 
         foreach ($edges as $key => $edge)
         {
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $edge);
+            $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $edge);
             $this->assertTrue($edge->exists());
             $this->assertGreaterThan(0, $edge->id);
             $this->assertNotNull($edge->created_at);
@@ -153,7 +153,7 @@ class HasManyRelationTest extends TestCase {
         {
             $edge = $author->books()->create($book, ['on' => $book['release_date']]);
 
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $edge);
+            $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $edge);
             $this->assertTrue($edge->exists());
             $this->assertGreaterThan(0, $edge->id);
             $this->assertNotNull($edge->created_at);
@@ -194,7 +194,7 @@ class HasManyRelationTest extends TestCase {
 
         foreach ($edges as $edge)
         {
-            $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeOut', $edge);
+            $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeOut', $edge);
             $this->assertTrue($edge->exists());
             $this->assertGreaterThan(0, $edge->id);
             $this->assertNotNull($edge->created_at);

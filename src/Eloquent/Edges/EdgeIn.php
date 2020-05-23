@@ -1,6 +1,6 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Eloquent\Edges;
+namespace CheHC\NeoEloquent\Eloquent\Edges;
 
 class EdgeIn extends Relation {
 

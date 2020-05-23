@@ -1,11 +1,11 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Tests\Functional\Relations\BelongsTo;
+namespace CheHC\NeoEloquent\Tests\Functional\Relations\BelongsTo;
 
 
 use Mockery as M;
-use EdwinFadilah\NeoEloquent\Tests\TestCase;
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Tests\TestCase;
+use CheHC\NeoEloquent\Eloquent\Model;
 
 class User extends Model {
 
@@ -20,7 +20,7 @@ class Location extends Model {
 
     public function user()
     {
-        return $this->belongsTo('EdwinFadilah\NeoEloquent\Tests\Functional\Relations\BelongsTo\User', 'LOCATED_AT');
+        return $this->belongsTo('CheHC\NeoEloquent\Tests\Functional\Relations\BelongsTo\User', 'LOCATED_AT');
     }
 }
 
@@ -126,7 +126,7 @@ class BelongsToRelationTest extends TestCase {
 
         $retrieved = $location->user()->edge($location->user);
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeIn', $retrieved);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeIn', $retrieved);
         $this->assertEquals($retrieved->since, 1966);
 
         $this->assertTrue($retrieved->delete());
@@ -149,7 +149,7 @@ class BelongsToRelationTest extends TestCase {
         $this->assertNull($withVan);
 
         $withJan = $location->user()->edge($jan);
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeIn', $withJan);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeIn', $withJan);
         $this->assertTrue($withJan->delete());
     }
 
@@ -164,7 +164,7 @@ class BelongsToRelationTest extends TestCase {
 
         $retrieved = $location->user()->edge();
 
-        $this->assertInstanceOf('EdwinFadilah\NeoEloquent\Eloquent\Edges\EdgeIn', $retrieved);
+        $this->assertInstanceOf('CheHC\NeoEloquent\Eloquent\Edges\EdgeIn', $retrieved);
         $this->assertEquals($relation->id, $retrieved->id);
         $this->assertEquals($relation->toArray(), $retrieved->toArray());
         $this->assertTrue($relation->delete());

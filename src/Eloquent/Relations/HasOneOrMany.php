@@ -1,13 +1,13 @@
 <?php
 
-namespace EdwinFadilah\NeoEloquent\Eloquent\Relations;
+namespace CheHC\NeoEloquent\Eloquent\Relations;
 
 
-use EdwinFadilah\NeoEloquent\Eloquent\Model;
-use EdwinFadilah\NeoEloquent\Eloquent\Builder;
+use CheHC\NeoEloquent\Eloquent\Model;
+use CheHC\NeoEloquent\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use EdwinFadilah\NeoEloquent\Eloquent\Edges\Finder;
-use EdwinFadilah\NeoEloquent\Eloquent\Edges\Relation;
+use CheHC\NeoEloquent\Eloquent\Edges\Finder;
+use CheHC\NeoEloquent\Eloquent\Edges\Relation;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\Relations\HasOneOrMany as IlluminateHasOneOrMany;
@@ -24,7 +24,7 @@ abstract class HasOneOrMany extends IlluminateHasOneOrMany implements RelationIn
     /**
      * The relationships finder instance.
      *
-     * @var \EdwinFadilah\NeoEloquent\Eloquent\Edges\Finder
+     * @var \CheHC\NeoEloquent\Eloquent\Edges\Finder
      */
     protected $finder;
 
@@ -38,8 +38,8 @@ abstract class HasOneOrMany extends IlluminateHasOneOrMany implements RelationIn
     /**
      * Create a new has many relationship instance.
      *
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Builder  $query
-     * @param  \EdwinFadilah\NeoEloquent\Eloquent\Model  $parent
+     * @param  \CheHC\NeoEloquent\Eloquent\Builder  $query
+     * @param  \CheHC\NeoEloquent\Eloquent\Model  $parent
      * @param  string  $type
      * @return void
      */
@@ -99,7 +99,7 @@ abstract class HasOneOrMany extends IlluminateHasOneOrMany implements RelationIn
      *
      * @param  \Illuminate\Database\Eloquent\Model $model
      * @param  array         $attributes
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Edges\Edge[In,Out, etc.]
+     * @return \CheHC\NeoEloquent\Eloquent\Edges\Edge[In,Out, etc.]
      */
     abstract public function getEdge(EloquentModel $model = null, $attributes = array());
 
@@ -108,7 +108,7 @@ abstract class HasOneOrMany extends IlluminateHasOneOrMany implements RelationIn
      * the related model determined by the relation function name.
      *
      * @param  \Illuminate\Database\Eloquent\Model $model
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Edges\Edge[In,Out, etc.]
+     * @return \CheHC\NeoEloquent\Eloquent\Edges\Edge[In,Out, etc.]
      */
     public function edge(Model $model = null)
     {
@@ -118,7 +118,7 @@ abstract class HasOneOrMany extends IlluminateHasOneOrMany implements RelationIn
     /**
      * Get all the edges of the given type and direction.
      *
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Edges\Edge[In|Out]
+     * @return \CheHC\NeoEloquent\Eloquent\Edges\Edge[In|Out]
      */
     public function edges()
     {
@@ -189,7 +189,7 @@ abstract class HasOneOrMany extends IlluminateHasOneOrMany implements RelationIn
      *
      * @param  \Illuminate\Database\Eloquent\Model  $model
      * @param  array $properties The relationship properites
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Edges\Edge[In, Out, etc.]
+     * @return \CheHC\NeoEloquent\Eloquent\Edges\Edge[In, Out, etc.]
      */
     public function save(EloquentModel $model, array $properties = array())
     {
@@ -228,7 +228,7 @@ abstract class HasOneOrMany extends IlluminateHasOneOrMany implements RelationIn
      *
      * @param  array  $attributes
      * @param  array   $properties The relationship properites
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Model
+     * @return \CheHC\NeoEloquent\Eloquent\Model
      */
     public function create(array $attributes = [], array $properties = array())
     {
@@ -576,7 +576,7 @@ abstract class HasOneOrMany extends IlluminateHasOneOrMany implements RelationIn
     /**
      * Get a new Finder instance.
      *
-     * @return \EdwinFadilah\NeoEloquent\Eloquent\Edges\Finder
+     * @return \CheHC\NeoEloquent\Eloquent\Edges\Finder
      */
     public function newFinder()
     {
